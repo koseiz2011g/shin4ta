@@ -1,0 +1,876 @@
+/* ===== 全体 ===== */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f8f8f8;
+  color: #222;
+}
+
+#app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ===== 見出し ===== */
+h1 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 12px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 12px 0;
+  margin-bottom: 20px;
+}
+
+/* ===== ボタン共通 ===== */
+button {
+  display: block;
+  width: 100%;
+  padding: 18px 0;
+  font-size: 18px;
+  border-radius: 18px;
+  border: none;
+  margin: 8px 0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ===== モード選択 ===== */
+.mode-btn {
+  button {
+  width: 100%;
+  background-color: #2f80ed;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 18px 0;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+
+  /* 影 */
+  box-shadow: 
+    0 6px 12px rgba(0,0,0,0.1),
+    0 12px 24px rgba(0,0,0,0.08);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+}
+
+.mode-btn:active {
+  transform: translateY(4px);
+
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mode-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.mode-stars,
+.mode-record {
+  margin-top: 6px;
+  font-size: 16px;
+  color: #f5a623;
+}
+
+/* ===== 学習メニュー ===== */
+.menu-btn {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.menu-btn.pressing {
+  background: #ffe8a3;
+}
+
+.menu-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.menu-progress {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ===== 問題画面 ===== */
+.question-header {
+  margin-bottom: 12px;
+}
+
+.counter {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.question-text {
+  font-size: 18px;
+  margin: 16px 0;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.choice {
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: none;
+  background: #f1f1f1;
+}
+
+.choice.correct {
+  background: #4caf50;
+  color: #fff;
+}
+
+.choice.wrong {
+  background: #f44336;
+  color: #fff;
+}
+
+.choice:disabled {
+  opacity: 0.8;
+}
+
+.choice-btn {
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.choice-btn.correct {
+  background: #9be7a1;
+}
+
+.choice-btn.wrong {
+  background: #f7a3a3;
+}
+
+/* ===== 正誤表示 ===== */
+.judge {
+  font-size: 20px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.judge.ok {
+  color: green;
+}
+
+.judge.ng {
+  color: red;
+}
+
+/* ===== 解説 ===== */
+.explanation {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+/* ===== YouTube ===== */
+.youtube-btn {
+  background: #ff0000;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.youtube-area iframe {
+  width: 100%;
+  height: 200px;
+  margin-top: 12px;
+  border: none;
+}
+
+/* ===== 前の問題 ===== */
+.prev-mode {
+  background: #eee;
+  color: #555;
+  padding: 6px;
+  text-align: center;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* ===== 結果・評価 ===== */
+.rank-img,
+.result-img {
+  display: block;
+  max-width: 80%;
+  margin: 16px auto;
+}
+
+/* ===== 小画面対応 ===== */
+@media (max-width: 360px) {
+  button {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+
+  
+
+  .menu-title {
+    font-size: 16px;
+  }
+
+  .menu-progress {
+    font-size: 12px;
+  }
+}
+
+.result-summary {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.evaluation {
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+.evaluation img {
+  max-width: 200px;
+  width: 70%;
+}
+
+
+.correct-text {
+  color: #2e8b57;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrong-text {
+  color: #c62828;
+  font-weight: bold;
+  text-align:center;
+}
+
+.review-flag {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-btn {
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  text-align: left;
+  background: #f5f5f5;
+  font-size: 16px;
+}
+
+.cat-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.cat-progress {
+  font-size: 14px;
+  color: #555;
+}
+
+.star {
+  margin-left: 6px;
+  color: gold;
+  font-size: 18px;
+}
+
+.star-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+}
+
+.star {
+  font-size: 20px;
+}
+
+.star-hold {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #999;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.star-wrapper.holding .star {
+  opacity: 0.4;
+}
+
+.star-wrapper.holding .star-hold {
+  opacity: 1;
+}
+
+.mode-card {
+  margin: 20px 0;
+}
+
+.mode-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+  border-radius: 16px;
+  border: none;
+  background: #f0f0f0;
+}
+
+
+
+
+.mode-sub {
+  margin-top: 8px;
+  font-size: 1.0rem;
+  color: #555;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  gap: 12px;
+
+  padding: 12px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  z-index: 100;
+}
+
+.bottom-nav button {
+  flex: 1;
+  padding: 14px 0;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+body {
+  padding-bottom: 90px; /* bottom-nav 高さ分 */
+}
+
+.choice {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 10px 0;
+
+  font-size: 16px;
+  border-radius: 14px;
+
+  touch-action: manipulation;
+}
+
+.star-wrapper {
+  touch-action: none;
+}
+
+.question {
+  margin: 20px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#explanation {
+  margin: 20px 0 120px; /* 下はナビ分多め */
+  font-size: 15px;
+}
+
+.review-flag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 4px 8px;
+  font-size: 12px;
+
+  background: #fff3cd;
+  color: #856404;
+  border-radius: 8px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  gap: 12px;
+
+  padding: 12px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+
+  z-index: 100;
+}
+
+.bottom-nav button {
+  flex: 1;
+  padding: 14px 0;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+/* 連チャン用微調整 */
+.chain-nav button {
+  font-weight: bold;
+}
+
+.question-area {
+  padding-bottom: 110px; /* 固定ナビ分 */
+}
+
+.question-area h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* 学習モード */
+.screen.study {
+  background: #fafafa;
+}
+
+/* 連チャンモード */
+.screen.chain {
+  background: #fff3e0;
+}
+
+
+.question {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.question .highlight {
+  background: linear-gradient(transparent 60%, #ffe066 60%);
+  font-weight: 700;
+}
+
+.category-btn {
+  position: relative;
+}
+
+.evaluation-image img {
+  max-width: 300px;
+  width: 90%;
+  height: auto;
+}
+
+.evaluation-image {
+  text-align: center;
+  margin: 15px 0;
+   animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0) rotate(0); }
+  25%  { transform: translateX(-6px) rotate(-3deg); }
+  50%  { transform: translateX(6px) rotate(3deg); }
+  75%  { transform: translateX(-6px) rotate(-3deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+  background: white;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.nav button {
+  flex: 1;
+  height: 48px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.nav-menu {
+  background: #eee;
+}
+
+.nav-prev {
+  background: #ddd;
+}
+
+.nav-next {
+  flex: 1.4;          /* ← 少し大きく */
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.screen {
+  padding-bottom: 80px;
+}
+
+.question-area {
+  touch-action: pan-y;
+}
+
+.highlight {
+  background: linear-gradient(transparent 60%, #ffff66 60%);
+  font-weight: bold;
+  padding: 0 2px;
+}
+
+.feedback {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 15px;
+  animation: pop 0.3s ease;
+}
+
+
+
+.record-popup {
+   position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   white-space: nowrap;
+  
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0,0,0,0.7);
+
+  padding: 10px 10px;
+  border-radius: 12px;
+
+  z-index: 999;
+  animation: popFade 0.5s ease;
+}
+
+.record-popup.correct {
+  color: #2ecc71;
+}
+
+
+
+
+
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.new-record {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff9800;
+  animation: Pop 0.6s ease;
+  text-align: center
+}
+
+@keyframes recordPop {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.chain-score {
+  font-size: 32px;
+  font-weight: bold;
+  color: #ff9800;
+  animation: recordPop 0.6s ease;
+  text-align: center
+}
+
+.mode-hero {
+  text-align: center;
+  margin: 20px 0;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+}
+
+.mode-cat {
+  
+  max-width: 100%;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+
+
+/* ふわふわ浮く */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.mode-study {
+  max-width: 50%;
+  text-align: center;
+  margin: 5px auto;
+}
+
+.cat-jump {
+  animation: jump 0.5s ease;
+}
+
+@keyframes jump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.reset-link {
+  font-size: 0.6rem;
+  color: #888;
+  margin-top: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.reset-link:active {
+  color: #e53935;
+}
+
+.chain-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.record-box {
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.record-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.record-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.start-btn {
+  font-size: 1.2rem;
+  padding: 14px 24px;
+  margin-bottom: 16px;
+}
+
+.reset-link {
+  font-size: 0.8rem;
+  color: #cc3333;
+  opacity: 0.7;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.reset-link:hover {
+  opacity: 1;
+}
+
+.feedback-correct {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   white-space: nowrap;
+  
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0,0,0,0.7);
+
+  padding: 10px 10px;
+  border-radius: 12px;
+
+  z-index: 999;
+  animation: popFade 0.5s ease;
+}
+
+.milestone-popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   white-space: nowrap;
+  
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background: rgba(0,0,0,0.7);
+
+  padding: 10px 10px;
+  border-radius: 12px;
+
+  z-index: 999;
+  animation: popFade 1s ease;
+}
+
+@keyframes popFade {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.chain-explanation {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.chain-explanation button {
+  display: block;
+  margin-top: 10px;
+}
+
+.youtube-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding-top: 56.25%;
+  margin: 12px auto;
+}
+
+.youtube-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.evaluation-message {
+  color: #2e8b57;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.score {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000000;
+  animation: recordPop 0.6s ease;
+  text-align: center;
+}
+
+.chain-best {
+   font-size: 1rem;
+  font-style: italic;
+  color: #000000;
+  animation: recordPop 0.6s ease;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 25px;
+
+  background: linear-gradient(45deg, #2f80ed, #56ccf2);
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo span {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-top: 5px;
+  color: #555;
+  -webkit-text-fill-color: initial;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f7f9fc, #eef3ff);
+  
+}
+
+.top-container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 30px 20px 40px;
+  text-align: center;
+}
+
+/* バージョン */
+.version {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #999;
+}
+
+.note {
+  font-size: 12px;
+}
