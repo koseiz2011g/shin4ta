@@ -416,6 +416,104 @@ question: {
  ]
   },
 
+   pre01: {
+    title: "📘 前置詞01",
+    questions: [
+{
+  sentence: "I get up <span class='highlight'>at seven</span>.",
+  choices: ["7時から", "7時まで", "7時間", "7時に"],
+  correct: 3,
+  explanation: "▶ 私は／起きます／7時に<br>▶「at」は時刻を表すときに使います。"
+},
+{
+  sentence: "I was born <span class='highlight'>in 2010</span>.",
+  choices: ["2010年に", "2010年まで", "2010年間", "2010年から"],
+  correct: 0,
+  explanation: "▶ 私は／生まれました／2010年に<br>▶「in」は年・月など広い範囲の「とき」を表します。"
+},
+{
+  sentence: "We have English <span class='highlight'>on Monday</span>.",
+  choices: ["月曜日以外", "月曜日まで", "月曜日から", "月曜日に"],
+  correct: 3,
+  explanation: "▶ 私たちは／英語（の授業）があります／月曜日に<br>▶「on」は曜日や特定の「日」を表します。"
+},
+{
+  sentence: "I lived there <span class='highlight'>for three years</span>.",
+  choices: ["3年間", "3年に", "3年から", "3年までに"],
+  correct: 0,
+  explanation: "▶ 私は／住んでいました／そこに／3年間<br>▶「for」は期間を表します。"
+},
+{
+  sentence: "I read a book <span class='highlight'>during lunch</span>.",
+  choices: ["昼食の後に", "昼食の間に", "昼食まで", "昼食から"],
+  correct: 1,
+  explanation: "▶ 私は／読みました／本を／昼食の間に<br>▶「during」は「～の間に」という意味です。"
+},
+{
+  sentence: "I studied <span class='highlight'>until ten</span>.",
+  choices: ["10時に", "10時から", "10時まで", "10時までに"],
+  correct: 2,
+  explanation: "▶ 私は／勉強しました／10時まで<br>▶「until」は「～まで（ずっと）」という意味です。"
+},
+{
+  sentence: "Finish your homework <span class='highlight'>by five</span>.",
+  choices: ["5時に", "5時までに", "5時から", "5時間"],
+  correct: 1,
+  explanation: "▶ 終えなさい／あなたの宿題を／5時までに<br>▶「by」は「～までに（期限）」を表します。"
+},
+{
+  sentence: "I have lived here <span class='highlight'>since 2020</span>.",
+  choices: ["2020年まで", "2020年間", "2020年に", "2020年から"],
+  correct: 3,
+  explanation: "▶ 私は／ずっと住んでいます／2020年から<br>▶「since」は「～以来（起点）」を表します。"
+},
+{
+  sentence: "School starts <span class='highlight'>from April</span>.",
+  choices: ["4月まで", "4月に", "4月から", "4月の間"],
+  correct: 2,
+  explanation: "▶ 学校は／始まります／4月から<br>▶「from」は「～から」という起点を表します。"
+},
+{
+  sentence: "She is waiting <span class='highlight'>at the bus stop</span>.",
+  choices: ["バス停で", "バス停まで", "バス停から", "バス停の中に"],
+  correct: 0,
+  explanation: "▶ 彼女は／待っています／バス停で<br>▶「at」は狭い地点を表します。"
+},
+{
+  sentence: "The ball is <span class='highlight'>in the box</span>.",
+  choices: ["箱の上に", "箱の中に", "箱の前に", "箱の下に"],
+  correct: 1,
+  explanation: "▶ ボールは／あります／箱の中に<br>▶「in」は「～の中に」という意味です。"
+},
+{
+  sentence: "The book is <span class='highlight'>on the desk</span>.",
+  choices: ["机の下に", "机の横に", "机の中に", "机の上に"],
+  correct: 3,
+  explanation: "▶ 本は／あります／机の上に<br>▶「on」は「～の上に（接して）」という意味です。"
+},
+{
+  sentence: "The book is <span class='highlight'>under the bed</span>.",
+  choices: ["ベッドの下に", "ベッドの横に", "ベッドの中に", "ベッドの上に"],
+  correct: 1,
+  explanation: "▶ 本は／あります／机の下に<br>▶「on」は「～の下に」という意味です。"
+},
+
+{
+  sentence: "A bridge is <span class='highlight'>over the river</span>.",
+  choices: ["川の横に", "川の下に", "川の上に", "川の中に"],
+  correct: 2,
+  explanation: "▶ 橋は／あります／川の上に<br>▶「over」は「～の上に（覆うように）」という意味です。"
+},
+{
+  sentence: "We talked <span class='highlight'>about music</span>.",
+  choices: ["音楽と", "音楽について", "音楽から", "音楽まで"],
+  correct: 1,
+  explanation: "▶ 私たちは／話しました／音楽について<br>▶「about」は「～について」という意味です。"
+}
+ ]
+  },
+
+
 }
 
 
@@ -1404,4 +1502,5 @@ if ("serviceWorker" in navigator) {
     .catch(err => console.error("SW failed", err));
 
 }
+
 
