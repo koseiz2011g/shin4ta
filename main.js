@@ -993,7 +993,10 @@ function renderStudyMenu(root) {
       }).join("")}
     </div>
 
-    <button id="modeBtn">モード選択へ</button>
+    
+    <div class="bottom-nav">
+    <button id="modeBtn" class="mode-btn">◀モード選択へ</button>
+    </div>
   `;
 
   document.querySelectorAll(".category-btn").forEach(btn => {
@@ -1329,7 +1332,10 @@ function renderChainMenu(root) {
   </div>
 
     <button id="startBtn">🔥 GAME START</button>
-    <button id="backBtn">◀ モード選択へ</button>
+    
+     <div class="bottom-nav">
+    <button id="backBtn" class="mode-btn">◀モード選択へ</button>
+    </div>
   `;
 
   document.getElementById("startBtn").onclick = startChainMode;
@@ -1629,6 +1635,7 @@ if ("serviceWorker" in navigator) {
     .catch(err => console.error("SW failed", err));
 
 }
+
 
 
 
