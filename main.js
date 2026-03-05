@@ -844,8 +844,8 @@ conjunction: {
   explanation: "▶彼女は／トライした／開けることを／窓を<br>▶「to open」は「開けることを」という意味で、「tried」 の目的語になる名詞的用法です。"
 },
 {
-  sentence: "I have one thing <span class='highlight'>to say about it</span>.",
-  choices: ["それについて言うために", "それについて言って", "それについて言うことを", "それについて言うべき"],
+  sentence: "I have one thing <span class='highlight'>to say</span> about it.",
+  choices: ["言うために", "言って", "言うから", "言うべき"],
   correct: 3,
   explanation: "▶ 私は／持っている／1つのことを／言うべき／それについて<br>▶「to say」は「言うべき」という意味で、「thing」を説明する形容詞的用法です。"
 },
@@ -1869,6 +1869,7 @@ if ("serviceWorker" in navigator) {
     .catch(err => console.error("SW failed", err));
 
 }
+
 
 
 
