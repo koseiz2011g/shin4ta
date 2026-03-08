@@ -547,7 +547,7 @@ pre02: {
 
 
 conjunction02: {
-    title: "📗 【必修】接続詞02",
+    title: "📗 接続詞02",
     questions: [
 {
   sentence: "<span class='highlight'>Though</span> he is young, he is very strong.",
@@ -2212,6 +2212,7 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("SW registered"))
     .catch(err => console.error("SW failed", err));
 }
+
 
 
 
