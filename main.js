@@ -2,14 +2,14 @@
    データ
 ===================== */
 const categories = {
-  tense: {
-    title: "📘 時制",
+tense: {
+    title: "📘 【必修】時制",
     questions: [
-      {
+ {
   sentence: "She <span class='highlight'>plays tennis</span> every day.",
   choices: ["テニスをしていた", "テニスをする", "テニスをする予定だ", "テニスをした"],
   correct: 1,
-  explanation: "▶「plays」 は現在形で、習慣的に行われる動作を表します。<br>▶ 彼女は/テニスをします/毎日",
+  explanation: "▶「plays」 は現在形で、習慣的に行われる動作を表します。▶ 彼女は/テニスをします/毎日",
   youtube: "https://www.youtube.com/embed/=XXXX"
 },
 {
@@ -37,7 +37,7 @@ sentence: "I <span class='highlight'>have been</span> to Canada twice. ",
   explanation: "▶「was playing」は過去進行形で、過去のある時点での動作の継続を表します。▶ 彼女は/テニスをしていました/そのとき"
 },
 {
-sentence: "I <span class='highlight'>have</span> already <span class='highlight'>done</span> my homework.",
+sentence: "I <span class='highlight'>have</span> already <span class='highlight'>done</span> my homework ",
   choices: ["やるつもり", "やっている", "やる予定だ", "やってしまった"],
   correct: 3,
   explanation: "▶ 私は/すでにやってしまった/私の宿題を。▶「have done」は現在完了形で、完了を表しています。「done」は「do」の過去分詞です。"
@@ -72,12 +72,12 @@ sentence: "I <span class='highlight'>have</span> already <span class='highlight'
   correct: 2,
   explanation: "▶「have been playing」は現在完了進行形で、動作が過去から現在まで継続していることを表します。▶ 彼らは/ずっとテニスをしています/2時間"
 }
-    ]
+ ]
   },
 
 
-pronoun01: {
-    title: "📘 代名詞01",
+ pronoun01: {
+    title: "📘 【必修】代名詞",
     questions: [
 {
   sentence: "Jim showed <span class='highlight'>me</span> his pictures.",
@@ -85,12 +85,6 @@ pronoun01: {
   correct: 0,
   explanation: "▶ ジムは/見せた/私に/彼の写真を<br>▶SVOO第4文型で、Sが人にものをVする、という意味になります。「me」は1人称単数・目的格の人称代名詞で、「私に」という意味で使われています。",
   youtube: "https://www.youtube.com/embed/=XXXX"
-},
-{
-  sentence: "This classroom is <span class='highlight'>ours</span>.",
-  choices: ["私たちの", "私たちのもの", "私たちは", "私たちに"],
-  correct: 1,
-  explanation: "▶ その教室＝私たちのもの<br>▶「ours」は1人称複数・所有代名詞で、「私たちのもの」という意味で使われています。"
 },
 {
   sentence: "<span class='highlight'>I</span> enjoyed playing tennis.",
@@ -120,25 +114,13 @@ pronoun01: {
   sentence: "<span class='highlight'>It</span> is very big.",
   choices: ["それを", "それは", "それに", "それの"],
   correct: 1,
-  explanation: "▶ それは／とても／大きい<br>▶「It」 は3人称単数・主格の人称代名詞で、「それは」という意味で使われています。"
+  explanation: "▶ それは／とても／大きい<br>▶「it」 は3人称単数・主格の人称代名詞で、「それは」という意味で使われています。"
 },
 {
   sentence: "We asked <span class='highlight'>our</span> teacher some questions.",
   choices: ["私たちに", "私たちの", "私たちは", "私たちを"],
   correct: 1,
   explanation: "▶ 私たちは／たずねた／私たちの先生に／いくつかの質問を<br>▶「our」 は1人称複数・所有格の人称代名詞で、「私たちの」という意味で使われています。"
-},
-{
-  sentence: "The red bag is ours, not <span class='highlight'>theirs</span>.",
-  choices: ["彼らに", "彼のもの", "彼女を", "彼らのもの"],
-  correct: 3,
-  explanation: "▶ その赤いかばんは／私たちのものです／彼らのものではありません<br>▶「theirs」 は3人称複数・所有代名詞で、「彼らのもの」という意味で使われています。"
-},
-{
-  sentence: "The blue notebook is <span class='highlight'>mine</span>, not yours.",
-  choices: ["私のもの", "私の", "私は", "私に"],
-  correct: 0,
-  explanation: "▶ その青いノート＝私のもの、あなたのものではない<br>▶「mine」は1人称単数・所有代名詞で、「私のもの」という意味で使われています。"
 },
 {
   sentence: "<span class='highlight'>We</span> are high school students.",
@@ -158,12 +140,489 @@ pronoun01: {
   correct: 0,
   explanation: "▶ 助けてください/私たちを<br>▶「us」は1人称複数・目的格の人称代名詞で、「私たちを」という意味で使われています。"
 }
+ ]
+  },
+
+modal: {
+    title: "📘 【必修】助動詞",
+    questions: [
+{
+  sentence: "We <span class='highlight'>must practice</span> soccer every day.",
+  choices: ["練習するべきだ", "練習するかもしれない", "練習できる", "練習しなければならない"],
+  correct: 3,
+  explanation: "▶ 私たちは／練習しなければならない／サッカーを／毎日<br>▶「must」は「～しなければならない」という義務を表す助動詞です。"
+},
+{
+  sentence: "You <span class='highlight'>mustn't enter</span> this room without permission.",
+  choices: ["入ってはいけない", "入らなければならない", "入るかもしれない", "入ることができる"],
+  correct: 0,
+  explanation: "▶ あなたは／入ってはいけない／この部屋に／許可なく<br>▶「mustn't」は「～してはいけない」という禁止を表します。"
+},
+{
+  sentence: "We <span class='highlight'>have to study</span> science at school.",
+  choices: ["勉強するべきだ", "勉強しなければならない", "勉強できる", "勉強するかもしれない"],
+  correct: 1,
+  explanation: "▶ 私たちは／勉強しなければならない／理科を／学校で<br>▶「have to」は「～しなければならない」という義務を表します。"
+},
+{
+  sentence: "You <span class='highlight'>don't have to get</span> up early tomorrow morning.",
+  choices: ["起きてはいけない", "起きるべきだ", "起きなくてもよい", "起きられる"],
+  correct: 2,
+  explanation: "▶ あなたは／起きなくてもよい／明日の朝早く<br>▶「don't have to」は「～する必要はない」という意味です。"
+},
+{
+  sentence: "That girl <span class='highlight'>must be</span> Aya's sister.",
+  choices: ["～であるにちがいない", "～であるべきだ", "～かもしれない", "～であってはいけない"],
+  correct: 0,
+  explanation: "▶ あの女の子は／～にちがいない／アヤの妹<br>▶「must」は強い推量（～にちがいない）を表します。"
+},
+{
+  sentence: "It <span class='highlight'>will rain</span> tomorrow.",
+  choices: ["降るかもしれない", "降るはずだ", "降るだろう", "降らなければならない"],
+  correct: 2,
+  explanation: "▶ 雨が降るだろう／明日<br>▶「will」は未来の予測を表します。"
+},
+{
+  sentence: "You <span class='highlight'>should study</span> English hard every day.",
+  choices: ["勉強できる", "勉強するべきだ", "勉強しなければならない", "勉強するかもしれない"],
+  correct: 1,
+  explanation: "▶ あなたは／勉強するべきだ／英語を／毎日<br>▶「should」は「～するべきだ」という義務を表します。"
+},
+{
+  sentence: "He <span class='highlight'>can play</span> the piano.",
+  choices: ["弾かなければならない", "弾いてはいけない", "弾くことができる", "弾くべきだ"],
+  correct: 2,
+  explanation: "▶ 彼は／弾くことができる／ピアノを<br>▶「can」は能力を表します。"
+},
+{
+  sentence: "<span class='highlight'>Can I use</span> this computer?",
+  choices: ["使わなければならないですか", "使ってもいいですか", "使うべきですか", "使うかもしれませんか"],
+  correct: 1,
+  explanation: "▶ 使ってもいいですか／このコンピューターを<br>▶「Can I ～?」は許可を求める表現です。"
+},
+{
+  sentence: "<span class='highlight'>May I sit</span> here?",
+  choices: ["座らなければなりませんか", "座るべきですか", "座ってもよろしいですか", "座れますか"],
+  correct: 2,
+  explanation: "▶ 座ってもよろしいですか／ここに<br>▶「May I ～?」は丁寧に許可を求める表現です。"
+},
+{
+  sentence: "Ken <span class='highlight'>may be</span> late.",
+  choices: ["遅れるにちがいない", "遅れるべきだ", "遅れるかもしれない", "遅れなければならない"],
+  correct: 2,
+  explanation: "▶ ケンは／遅れるかもしれない<br>▶「may」は弱い可能性を表します。"
+}
+ ]
+  },
+
+Que: {
+    title: "📘 【必修】疑問詞",
+    questions: [
+{
+  sentence: "<span class='highlight'>Who</span> is your best friend?",
+  choices: ["だれ", "どこに", "いつ", "何を"],
+  correct: 0,
+  explanation: "▶ だれ／あなたのいちばんの友だちは<br>▶「Who」 は「だれ」という意味の疑問代名詞で、この例文では補語になります。"
+},
+{
+  sentence: "<span class='highlight'>What</span> do you like?",
+  choices: ["だれを", "どこに", "いつ", "何を"],
+  correct: 3,
+  explanation: "▶ 何を／あなたは／好んでいますか<br>▶「What」 は「何」という意味の疑問代名詞で、この例文では目的語になります。"
+},
+{
+  sentence: "<span class='highlight'>Where</span> do you live?",
+  choices: ["だれが", "どこに", "いつ", "何を"],
+  correct: 1,
+  explanation: "▶ どこに／あなたは／住んでいますか<br>▶「Where」 は「どこに」という意味の疑問副詞で、場所をたずねています。"
+},
+{
+  sentence: "<span class='highlight'>When</span> do you go to school?",
+  choices: ["だれを", "どこに", "いつ", "何を"],
+  correct: 2,
+  explanation: "▶ いつ／あなたは／行きますか／学校へ<br>▶「When」 は「いつ」という意味の疑問副詞で、時をたずねています。"
+},
+{
+  sentence: "<span class='highlight'>What time</span> do you get up?",
+  choices: ["何時に", "だれ", "どこに", "いつ"],
+  correct: 0,
+  explanation: "▶ 何時に／あなたは／起きますか<br>▶「What time」 は「何時に」という意味の疑問副詞で、時刻をたずねています。"
+},
+{
+  sentence: "<span class='highlight'>How</span> do you go to school?",
+  choices: ["だれ", "どこに", "いつ", "どうやって"],
+  correct: 3,
+  explanation: "▶ どうやって／あなたは／行きますか／学校へ<br>▶「How」 は「どうやって」という意味の疑問副詞で、方法をたずねています。"
+},
+{
+  sentence: "<span class='highlight'>How old</span> are you?",
+  choices: ["だれ", "どこに", "何歳", "いつ"],
+  correct: 2,
+  explanation: "▶ 何歳ですか／あなたは<br>▶「How old」 は「どのくらい年寄りか」という意味の疑問表現で、年齢をたずねています。"
+},
+{
+  sentence: "<span class='highlight'>Which color</span> do you like?",
+  choices: ["だれの色を", "どこの色を", "いつの色を", "どの色を"],
+  correct: 3,
+  explanation: "▶ どの色を／あなたは／好んでいますか<br>▶「Which color」 で「どの色を」という意味です。"
+}
+ ]
+  },
+
+conjunction: {
+    title: "📘 【必修】接続詞",
+    questions: [
+{
+  sentence: "<span class='highlight'>When</span> I got home, it was raining.",
+  choices: ["～するまで", "～して", "もし～なら", "～するとき"],
+  correct: 3,
+  explanation: "▶ 私が家に帰ったとき／雨が降っていた<br>▶「when」は「～するとき」という意味です。"
+},
+{
+  sentence: "I like math, <span class='highlight'>but</span> I don’t like science.",
+  choices: ["そして", "だから", "しかし", "もし～なら"],
+  correct: 2,
+  explanation: "▶ 私は数学が好きです／しかし／理科は好きではありません<br>▶「but」は逆接で「しかし」という意味です。"
+},
+{
+  sentence: "I play soccer <span class='highlight'>and</span> tennis.",
+  choices: ["または", "しかし", "そして", "だから"],
+  correct: 2,
+  explanation: "▶ 私は／します／サッカーとテニスを<br>▶「and」は「そして」という意味で語と語を結びます。"
+},
+{
+  sentence: "Do you want tea <span class='highlight'>or</span> juice?",
+  choices: ["そして", "または", "しかし", "だから"],
+  correct: 1,
+  explanation: "▶ あなたは／望んでいますか／お茶を／それともジュースを<br>▶「or」は選択を表し、「または」という意味です。"
+},
+{
+  sentence: "<span class='highlight'>Both</span> Tom <span class='highlight'>and</span> Ken like music.",
+  choices: ["どちらか一方", "両方とも", "どちらも～ない", "しかし"],
+  correct: 1,
+  explanation: "▶ トムとケンの両方とも／音楽が好きです<br>▶「both A and B」は「AもBも両方」という意味です。"
+},
+{
+  sentence: "Study hard, <span class='highlight'>and</span> you will pass the test.",
+  choices: ["さもないと", "そうすれば", "しかし", "もし～なら"],
+  correct: 1,
+  explanation: "▶ 一生懸命勉強しなさい、そうすれば試験に合格します<br>▶ 命令文＋and は「～しなさい、そうすれば…」という意味です。"
+},
+{
+  sentence: "I stayed home <span class='highlight'>because</span> I was sick.",
+  choices: ["～する前に", "なぜなら～だから", "～だけれども", "その間に"],
+  correct: 1,
+  explanation: "▶ 私は／家にいました／なぜなら病気だったから<br>▶「because」は理由を表し、「なぜなら～だから」という意味です。"
+},
+{
+  sentence: "It was very cold, <span class='highlight'>so</span> I stayed home.",
+  choices: ["だから", "しかし", "～する前に", "その間に"],
+  correct: 0,
+  explanation: "▶ とても寒かった／だから／私はいた／家に<br>▶「so」は結果を表し、「だから」という意味です。"
+},
+{
+  sentence: "Brush your teeth <span class='highlight'>before</span> you go to bed.",
+  choices: ["～した後で", "なぜなら～だから", "～する前に", "～だけれども"],
+  correct: 2,
+  explanation: "▶ 歯をみがきなさい／寝る前に<br>▶「before」は「～する前に」という意味です。"
+},
+{
+  sentence: "I did my homework <span class='highlight'>after</span> I got home.",
+  choices: ["～する前に", "～した後で", "だから", "その間に"],
+  correct: 1,
+  explanation: "▶ 私はやった／宿題を／家に帰った後で<br>▶「after」は「～した後で」という意味です。"
+},
+ ]
+  },
+
+
+
+pre01: {
+    title: "📘 【必修】前置詞",
+    questions: [
+{
+  sentence: "I get up <span class='highlight'>at seven</span>.",
+  choices: ["7時から", "7時まで", "7時間", "7時に"],
+  correct: 3,
+  explanation: "▶ 私は／起きます／7時に<br>▶「at」は時刻を表すときに使います。"
+},
+{
+  sentence: "I was born <span class='highlight'>in 2010</span>.",
+  choices: ["2010年に", "2010年まで", "2010年間", "2010年から"],
+  correct: 0,
+  explanation: "▶ 私は／生まれました／2010年に<br>▶「in」は年・月など広い範囲の「とき」を表します。"
+},
+{
+  sentence: "We have English <span class='highlight'>on Monday</span>.",
+  choices: ["月曜日以外", "月曜日まで", "月曜日から", "月曜日に"],
+  correct: 3,
+  explanation: "▶ 私たちは／英語（の授業）があります／月曜日に<br>▶「on」は曜日や特定の「日」を表します。"
+},
+{
+  sentence: "I lived there <span class='highlight'>for three years</span>.",
+  choices: ["3年間", "3年に", "3年から", "3年までに"],
+  correct: 0,
+  explanation: "▶ 私は／住んでいました／そこに／3年間<br>▶「for」は期間を表します。"
+},
+{
+  sentence: "I have lived here <span class='highlight'>since 2020</span>.",
+  choices: ["2020年まで", "2020年間", "2020年に", "2020年から"],
+  correct: 3,
+  explanation: "▶ 私は／ずっと住んでいます／2020年から<br>▶「since」は「～以来（起点）」を表します。"
+},
+{
+  sentence: "School starts <span class='highlight'>from April</span>.",
+  choices: ["4月まで", "4月に", "4月から", "4月の間"],
+  correct: 2,
+  explanation: "▶ 学校は／始まります／4月から<br>▶「from」は「～から」という起点を表します。"
+},
+{
+  sentence: "She is waiting <span class='highlight'>at the bus stop</span>.",
+  choices: ["バス停で", "バス停まで", "バス停から", "バス停の中に"],
+  correct: 0,
+  explanation: "▶ 彼女は／待っています／バス停で<br>▶「at」は狭い地点を表します。"
+},
+{
+  sentence: "The ball is <span class='highlight'>in the box</span>.",
+  choices: ["箱の上に", "箱の中に", "箱の前に", "箱の下に"],
+  correct: 1,
+  explanation: "▶ ボールは／あります／箱の中に<br>▶「in」は「～の中に」という意味です。"
+},
+{
+  sentence: "The book is <span class='highlight'>on the desk</span>.",
+  choices: ["机の下に", "机の横に", "机の中に", "机の上に"],
+  correct: 3,
+  explanation: "▶ 本は／あります／机の上に<br>▶「on」は「～の上に（接して）」という意味です。"
+},
+{
+  sentence: "The book is <span class='highlight'>under the bed</span>.",
+  choices: ["ベッドの下に", "ベッドの横に", "ベッドの中に", "ベッドの上に"],
+  correct: 1,
+  explanation: "▶ 本は／あります／机の下に<br>▶「on」は「～の下に」という意味です。"
+},
+{
+  sentence: "We talked <span class='highlight'>about music</span>.",
+  choices: ["音楽と", "音楽について", "音楽から", "音楽まで"],
+  correct: 1,
+  explanation: "▶ 私たちは／話しました／音楽について<br>▶「about」は「～について」という意味です。"
+}
+ ]
+  },
+
+
+infinitive01: {
+    title: "📘 【必修】不定詞01",
+    questions: [
+{
+  sentence: "I had no time <span class='highlight'>to do my homework</span>.",
+  choices: ["宿題をするための", "宿題をすることを", "宿題をして", "宿題をするために"],
+  correct: 0,
+  explanation: "▶ 私は/持っていた/ゼロの時間を/宿題をするための<br>▶「to do」は「するための」という意味で、「time」 を説明する形容詞的用法です。"
+},
+{
+  sentence: "He went to the park <span class='highlight'>to play tennis</span>.",
+  choices: ["テニスをして", "テニスをするために", "テニスをすることを", "テニスをするための"],
+  correct: 1,
+  explanation: "▶ 彼は/行きました/公園へ/テニスをするために<br>▶「to play」は「するために」という意味で、目的を表す副詞的用法です。"
+},
+{
+  sentence: "I want <span class='highlight'>to visit</span> Australia.",
+  choices: ["訪れて", "訪れるために", "訪れることを", "訪れるための"],
+  correct: 2,
+  explanation: "▶ 私は/望んでいる/訪れることを/オーストラリアを<br>▶「to visit」は 「訪れることを」という意味で、「want」 の目的語になる名詞的用法です。"
+},
+{
+  sentence: "He has a dream <span class='highlight'>to be a singer</span>.",
+  choices: ["歌手になるために", "歌手になるための", "歌手になることを", "歌手になるという"],
+  correct: 3,
+  explanation: "▶ 彼は/持っている/一つの夢を/歌手になるという<br>▶「to be a singer」 は 「dream」 の内容を説明する同格の不定詞です。"
+},
+{
+  sentence: "Aki got up early <span class='highlight'>to help his mother</span>.",
+  choices: ["母を助けるために", "母を助けて", "母を助けることを", "母を助けるための"],
+  correct: 0,
+  explanation: "▶ アキは/起きました/早く/手伝うために/お母さんを<br>▶「to help」は「手伝うために」という意味で、目的を表す副詞的用法です。"
+},
+{
+  sentence: "I am glad <span class='highlight'>to see you again</span>.",
+  choices: ["またあなたに会うことを", "またあなたに会って", "またあなたに会うために", "またあなたに会うための"],
+  correct: 1,
+  explanation: "▶ 私は/うれしい/あなたに会って/また<br>▶「to see you again」は 「あなたに会って」という意味で、「glad」 という感情の原因を表しています。"
+},
+{
+  sentence: "<span class='highlight'>To play tennis</span> is a lot of fun.",
+  choices: ["テニスをすることは", "テニスをするために", "テニスをして", "テニスをするための"],
+  correct: 0,
+  explanation: "▶ テニスをすることは/とても楽しい<br>▶「to play tennis」は、「テニスをすることは」という意味で、不定詞が文の主語として使われている名詞的用法です。"
+},
+{
+  sentence: "I want something cold <span class='highlight'>to drink</span>.",
+  choices: ["飲むことを", "飲んで", "飲むために", "飲むための"],
+  correct: 3,
+  explanation: "▶ 私は/望んでいる/冷たい何かを/飲むための<br>▶「to drink」は 「飲むための」という意味で、「something cold」 を説明する形容詞的用法です。"
+}
+ ]
+  },
+
+modal02: {
+    title: "📗 助動詞02",
+    questions: [
+{
+  sentence: "Keiko <span class='highlight'>has to make</span> breakfast for her family.",
+  choices: ["作れる", "作るべきだ", "作らなければならない", "作るかもしれない"],
+  correct: 2,
+  explanation: "▶ ケイコは／作らなければならない／朝食を<br>▶「has to」は「have to」と同じ意味ですが、三人称単数の主語のときに用います。"
+},
+
+{
+  sentence: "She <span class='highlight'>is able to speak</span> three languages.",
+  choices: ["話すことができる", "話さなければならない", "話すべきだ", "話すかもしれない"],
+  correct: 0,
+  explanation: "▶ 彼女は／話すことができる／3か国語を<br>▶「be able to」は「can」と同じく能力を表します。"
+},
+{
+  sentence: "<span class='highlight'>Shall I open</span> the door?",
+  choices: ["開けましょうか", "開けるべきですか", "開けられますか", "開けなければなりませんか"],
+  correct: 0,
+  explanation: "▶ 開けましょうか／ドアを<br>▶「Shall I ～?」は申し出の表現です。"
+},
+{
+  sentence: "<span class='highlight'>Shall we go</span> out?",
+  choices: ["行かなければならないですか", "行きましょうか", "行けますか", "行くべきですか"],
+  correct: 1,
+  explanation: "▶ 行きましょうか／外へ<br>▶「Shall we ～?」は勧誘の表現です。"
+},
+{
+  sentence: "<span class='highlight'>Would you come</span> to my house tomorrow?",
+  choices: ["来られますか", "来るべきですか", "来てもらえますか", "来なければなりませんか"],
+  correct: 2,
+  explanation: "▶ 来てもらえますか／私の家に／明日<br>▶「Would you ～?」は丁寧な依頼を表します。"
+},
+{
+  sentence: "<span class='highlight'>Would you like</span> some coffee?",
+  choices: ["望んでいますか", "飲まなければなりませんか", "飲めますか", "飲むべきですか"],
+  correct: 0,
+  explanation: "▶ いかがですか／コーヒーは<br>▶「Would you like ～?」は勧める表現です。"
+},
+{
+  sentence: "I<span class='highlight'>'d like to ask</span> you some questions.",
+  choices: ["聞かなければならない", "聞くことができる", "聞きたい", "聞くべきだ"],
+  correct: 2,
+  explanation: "▶ 私は／聞きたい／あなたに／いくつかの質問を<br>▶「I'd like to ～」は「～したい」という丁寧な希望表現です。"
+}
+ ]
+  },
+
+pre02: {
+    title: "📗 前置詞02",
+    questions: [
+{
+  sentence: "I read a book <span class='highlight'>during lunch</span>.",
+  choices: ["昼食の後に", "昼食の間に", "昼食まで", "昼食から"],
+  correct: 1,
+  explanation: "▶ 私は／読みました／本を／昼食の間に<br>▶「during」は「～の間に」という意味です。"
+},
+{
+  sentence: "I studied <span class='highlight'>until ten</span>.",
+  choices: ["10時に", "10時から", "10時まで", "10時までに"],
+  correct: 2,
+  explanation: "▶ 私は／勉強しました／10時まで<br>▶「until」は「～まで（ずっと）」という意味です。"
+},
+{
+  sentence: "Finish your homework <span class='highlight'>by five</span>.",
+  choices: ["5時に", "5時までに", "5時から", "5時間"],
+  correct: 1,
+  explanation: "▶ 終えなさい／あなたの宿題を／5時までに<br>▶「by」は「～までに（期限）」を表します。"
+},
+{
+  sentence: "A bridge is <span class='highlight'>over the river</span>.",
+  choices: ["川の横に", "川の下に", "川の上に", "川の中に"],
+  correct: 2,
+  explanation: "▶ 橋は／あります／川の上に<br>▶「over」は「～の上に（覆うように）」という意味です。"
+},
+
 
  ]
   },
 
-pronoun02: {
-    title: "📘 代名詞02",
+
+conjunction02: {
+    title: "📗 【必修】接続詞02",
+    questions: [
+{
+  sentence: "<span class='highlight'>Though</span> he is young, he is very strong.",
+  choices: ["もし～なら", "～だけれども", "～するとき", "だから"],
+  correct: 1,
+  explanation: "▶ 彼は若いけれども／とても強い<br>▶「though」は逆接を表し、「～だけれども」という意味です。"
+},
+{
+  sentence: "<span class='highlight'>Although</span> it was raining, we played soccer.",
+  choices: ["なぜなら～だから", "だから", "～の間に", "～だけれども"],
+  correct: 3,
+  explanation: "▶ 雨が降っていたけれども／私たちはサッカーをしました<br>▶「although」は逆接を表し、「～だけれども」という意味です。"
+},
+{
+  sentence: "My mother was cooking <span class='highlight'>while</span> I was studying.",
+  choices: ["～する間に", "～する前に", "なぜなら～だから", "だから"],
+  correct: 0,
+  explanation: "▶ 母は／料理をしていました／私が勉強している間に<br>▶「while」は「～している間に」という意味です。"
+},
+{
+  sentence: "I have lived here <span class='highlight'>since</span> I was five.",
+  choices: ["～の間に", "～だけれども", "だから", "～以来ずっと"],
+  correct: 3,
+  explanation: "▶ 私は／ずっと住んでいます／ここに／私が5歳のときから<br>▶「since」は「～以来ずっと」という意味で使われます。"
+},
+{
+  sentence: "She can speak <span class='highlight'>not only</span> English <span class='highlight'>but also</span> French.",
+  choices: ["どちらも～ない", "どちらか一方", "AだけでなくBも", "しかし"],
+  correct: 2,
+  explanation: "▶ 彼女は／話すことができる／英語だけでなくフランス語も<br>▶「not only A but also B」は「AだけでなくBも」という意味です。"
+},
+{
+  sentence: "<span class='highlight'>Neither</span> my father <span class='highlight'>nor</span> my mother is at home.",
+  choices: ["だから", "両方とも～である", "どちらか一方", "どちらも～ない"],
+  correct: 3,
+  explanation: "▶ 父も母も／いません／家に<br>▶「neither A nor B」は「AもBも～ない」という意味です。"
+},
+{
+  sentence: "You can choose <span class='highlight'>either</span> this book <span class='highlight'>or</span> that one.",
+  choices: ["両方とも", "どちらも～ない", "どちらか一方", "そして"],
+  correct: 2,
+  explanation: "▶ あなたは／選ぶことができる／どちらか一方を／この本かあの本の<br>▶「either A or B」は「AかBのどちらか」という意味です。"
+},
+{
+  sentence: "He was <span class='highlight'>so</span> tired <span class='highlight'>that</span> he went to bed early.",
+  choices: ["とても～なので…", "もし～なら", "～だけれども", "～するとき"],
+  correct: 0,
+  explanation: "▶ 彼は／とても疲れていたので／早く寝ました<br>▶「so ～ that …」は「とても～なので…」という結果を表します。"
+},
+{
+  sentence: "I know <span class='highlight'>that</span> she is kind.",
+  choices: ["～するとき", "～ということ", "もし～なら", "だから"],
+  correct: 1,
+  explanation: "▶ 私は知っています／彼女が親切だということを<br>▶「that」は名詞節を導き、「～ということ」という意味になります。"
+},
+{
+  sentence: "<span class='highlight'>If</span> it is sunny, we will play soccer.",
+  choices: ["もし～なら", "～だけれども", "～するとき", "そして"],
+  correct: 0,
+  explanation: "▶ もし晴れるなら／私たちはサッカーをします<br>▶「if」は条件を表し、「もし～なら」という意味です。条件節は未来のことでも現在形で表現します。"
+},
+{
+  sentence: "Hurry up, <span class='highlight'>or</span> you will miss the bus.",
+  choices: ["そして", "しかし", "だから", "さもないと"],
+  correct: 3,
+  explanation: "▶ 急ぎなさい、さもないとバスに乗り遅れます<br>▶ 命令文＋or は「～しなさい、さもないと…」という意味です。"
+}
+
+ ]
+  },
+
+
+
+ pronoun02: {
+    title: "📗 代名詞02",
     questions: [
 {
   sentence: "The dog follows <span class='highlight'>them</span>.",
@@ -242,586 +701,117 @@ pronoun02: {
   choices: ["彼女を", "彼の", "彼に", "彼女のもの"],
   correct: 3,
   explanation: "▶ そのえんぴつ＝彼女のもの<br>▶「hers」 は3人称単数・所有代名詞で、「彼女のもの」という意味で使われています。"
+},
+{
+  sentence: "The blue notebook is <span class='highlight'>mine</span>, not yours.",
+  choices: ["私のもの", "私の", "私は", "私に"],
+  correct: 0,
+  explanation: "▶ その青いノート＝私のもの、あなたのものではない<br>▶「mine」は1人称単数・所有代名詞で、「私のもの」という意味で使われています。"
+},
+
+{
+  sentence: "The red bag is ours, not <span class='highlight'>theirs</span>.",
+  choices: ["彼らに", "彼のもの", "彼女を", "彼らのもの"],
+  correct: 3,
+  explanation: "▶ その赤いかばんは／私たちのものです／彼らのものではありません<br>▶「theirs」 は3人称複数・所有代名詞で、「彼らのもの」という意味で使われています。"
+},
+{
+  sentence: "This classroom is <span class='highlight'>ours</span>.",
+  choices: ["私たちの", "私たちのもの", "私たちは", "私たちに"],
+  correct: 1,
+  explanation: "▶ その教室＝私たちのもの<br>▶「ours」は1人称複数・所有代名詞で、「私たちのもの」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>This</span> is my book.",
+  choices: ["これに", "これは", "この", "これを"],
+  correct: 1,
+  explanation: "▶ これは/私の本です<br>▶「this」は指示代名詞で、単数を表し、「これは」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>This</span> book is easy.",
+  choices: ["この", "これを", "これは", "これに"],
+  correct: 0,
+  explanation: "▶ この本は/やさしい<br>▶「this」は指示形容詞として名詞を修飾し、「この」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>That</span> is my bike.",
+  choices: ["あれを", "あの", "あれは", "あれに"],
+  correct: 2,
+  explanation: "▶ あれは/私の自転車です<br>▶「that」は指示代名詞で、単数を表し、「あれは」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>That</span> bike is new.",
+  choices: ["あれに", "あの", "あれは", "あれを"],
+  correct: 1,
+  explanation: "▶ あの自転車は/新しい<br>▶「that」は指示形容詞として名詞を修飾し、「あの」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>These</span> are my pens.",
+  choices: ["これらは", "これらを", "これらの", "これらに"],
+  correct: 0,
+  explanation: "▶ これらは/私のペンです<br>▶「these」は指示代名詞で、複数を表し、「これらは」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>These</span> pens are new.",
+  choices: ["これらに", "これらのもの", "これらは", "これらの"],
+  correct: 3,
+  explanation: "▶ これらのペンは/新しい<br>▶「these」は指示形容詞として名詞を修飾し、「これらの」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>Those</span> are my shoes.",
+  choices: ["あれらの", "あれらは", "あれらに", "あれらを"],
+  correct: 1,
+  explanation: "▶ あれらは/私のくつです<br>▶「those」は指示代名詞で、複数を表し、「あれらは」という意味で使われています。"
+},
+{
+  sentence: "<span class='highlight'>Those</span> shoes are old.",
+  choices: ["あれらを", "あれらのもの", "あれらの", "あれらは"],
+  correct: 2,
+  explanation: "▶ あれらのくつは/古い<br>▶「those」は指示形容詞として名詞を修飾し、「あれらの」という意味で使われています。"
+},
+{
+  sentence: "I did my homework <span class='highlight'>myself</span>.",
+  choices: ["私を", "私のもの", "私自身で", "私に"],
+  correct: 2,
+  explanation: "▶ 私は/自分自身で/宿題をしました<br>▶「myself」は1人称単数の再帰代名詞で、「私自身で」という意味で使われています。"
+},
+{
+  sentence: "You can do it <span class='highlight'>yourself</span>.",
+  choices: ["あなたのもの", "あなた自身で", "あなたは", "あなたに"],
+  correct: 1,
+  explanation: "▶ あなたは/することができる／それを/自分自身で<br>▶「yourself」は2人称単数の再帰代名詞で、「あなた自身で」という意味で使われています。"
+},
+{
+  sentence: "He made this cake <span class='highlight'>himself</span>.",
+  choices: ["彼を", "彼のもの", "彼に", "彼自身で"],
+  correct: 3,
+  explanation: "▶ 彼は/作った／このケーキを/自分自身で<br>▶「himself」は3人称単数男性の再帰代名詞で、「彼自身で」という意味で使われています。"
+},
+{
+  sentence: "She cleaned the room <span class='highlight'>herself</span>.",
+  choices: ["彼女自身で", "彼女のもの", "彼女を", "彼女に"],
+  correct: 0,
+  explanation: "▶ 彼女は／掃除した／その部屋を／自分自身で<br>▶「herself」は3人称単数女性の再帰代名詞で、「彼女自身で」という意味で使われています。"
+},
+{
+  sentence: "We built the house <span class='highlight'>ourselves</span>.",
+  choices: ["私たちを", "私たち自身で", "私たちのもの", "私たちに"],
+  correct: 1,
+  explanation: "▶ 私たちは／建てた／その家を／私たち自身で<br>▶「ourselves」は1人称複数の再帰代名詞で、「私たち自身で」という意味で使われています。"
+},
+{
+  sentence: "They enjoyed the party <span class='highlight'>themselves</span>.",
+  choices: ["彼らのもの", "彼らを", "彼らに", "彼ら自身で"],
+  correct: 3,
+  explanation: "▶ 彼らは／楽しんだ／そのパーティーを／彼ら自身で<br>▶「themselves」は3人称複数の再帰代名詞で、「彼ら自身で」という意味で使われています。"
 }
 
 
  ]
   },
 
-modal: {
-    title: "📘 助動詞",
-    questions: [
-{
-  sentence: "We <span class='highlight'>must practice</span> soccer every day.",
-  choices: ["練習するべきだ", "練習するかもしれない", "練習できる", "練習しなければならない"],
-  correct: 3,
-  explanation: "▶ 私たちは／練習しなければならない／サッカーを／毎日<br>▶「must」は「～しなければならない」という義務を表す助動詞です。"
-},
-{
-  sentence: "You <span class='highlight'>mustn't enter</span> this room without permission.",
-  choices: ["入ってはいけない", "入らなければならない", "入るかもしれない", "入ることができる"],
-  correct: 0,
-  explanation: "▶ あなたは／入ってはいけない／この部屋に／許可なく<br>▶「mustn't」は「～してはいけない」という禁止を表します。"
-},
-{
-  sentence: "We <span class='highlight'>have to study</span> science at school.",
-  choices: ["勉強するべきだ", "勉強しなければならない", "勉強できる", "勉強するかもしれない"],
-  correct: 1,
-  explanation: "▶ 私たちは／勉強しなければならない／理科を／学校で<br>▶「have to」は「～しなければならない」という義務を表します。"
-},
-{
-  sentence: "Keiko <span class='highlight'>has to make</span> breakfast for her family.",
-  choices: ["作れる", "作るべきだ", "作らなければならない", "作るかもしれない"],
-  correct: 2,
-  explanation: "▶ ケイコは／作らなければならない／朝食を<br>▶「has to」は「have to」と同じ意味ですが、三人称単数の主語のときに用います。"
-},
-{
-  sentence: "You <span class='highlight'>don't have to get up</span> early tomorrow morning.",
-  choices: ["起きてはいけない", "起きるべきだ", "起きなくてもよい", "起きられる"],
-  correct: 2,
-  explanation: "▶ あなたは／起きなくてもよい／明日の朝早く<br>▶「don't have to」は「～する必要はない」という意味です。"
-},
-{
-  sentence: "That girl <span class='highlight'>must be</span> Aya's sister.",
-  choices: ["～であるにちがいない", "～であるべきだ", "～かもしれない", "～であってはいけない"],
-  correct: 0,
-  explanation: "▶ あの女の子は／～にちがいない／アヤの妹<br>▶「must」は強い推量（～にちがいない）を表します。"
-},
-{
-  sentence: "It <span class='highlight'>will rain</span> tomorrow.",
-  choices: ["降るかもしれない", "降るはずだ", "降るだろう", "降らなければならない"],
-  correct: 2,
-  explanation: "▶ 雨が降るだろう／明日<br>▶「will」は未来の予測を表します。"
-},
-{
-  sentence: "You <span class='highlight'>should study</span> English hard every day.",
-  choices: ["勉強できる", "勉強するべきだ", "勉強しなければならない", "勉強するかもしれない"],
-  correct: 1,
-  explanation: "▶ あなたは／勉強するべきだ／英語を／毎日<br>▶「should」は「～するべきだ」という義務を表します。"
-},
-{
-  sentence: "He <span class='highlight'>can play</span> the piano.",
-  choices: ["弾かなければならない", "弾いてはいけない", "弾くことができる", "弾くべきだ"],
-  correct: 2,
-  explanation: "▶ 彼は／弾くことができる／ピアノを<br>▶「can」は能力を表します。"
-},
-{
-  sentence: "<span class='highlight'>Can I use</span> this computer?",
-  choices: ["使わなければならないですか", "使ってもいいですか", "使うべきですか", "使うかもしれませんか"],
-  correct: 1,
-  explanation: "▶ 使ってもいいですか／このコンピューターを<br>▶「Can I ～?」は許可を求める表現です。"
-},
-{
-  sentence: "<span class='highlight'>May I sit</span> here?",
-  choices: ["座らなければなりませんか", "座るべきですか", "座ってもよろしいですか", "座れますか"],
-  correct: 2,
-  explanation: "▶ 座ってもよろしいですか／ここに<br>▶「May I ～?」は丁寧に許可を求める表現です。"
-},
-{
-  sentence: "Ken <span class='highlight'>may be</span> late.",
-  choices: ["遅れるにちがいない", "遅れるべきだ", "遅れるかもしれない", "遅れなければならない"],
-  correct: 2,
-  explanation: "▶ ケンは／遅れるかもしれない<br>▶「may」は弱い可能性を表します。"
-},
-{
-  sentence: "She <span class='highlight'>is able to speak</span> three languages.",
-  choices: ["話すことができる", "話さなければならない", "話すべきだ", "話すかもしれない"],
-  correct: 0,
-  explanation: "▶ 彼女は／話すことができる／3か国語を<br>▶「be able to」は「can」と同じく能力を表します。"
-},
-{
-  sentence: "<span class='highlight'>Shall I open</span> the door?",
-  choices: ["開けましょうか", "開けるべきですか", "開けられますか", "開けなければなりませんか"],
-  correct: 0,
-  explanation: "▶ 開けましょうか／ドアを<br>▶「Shall I ～?」は申し出の表現です。"
-},
-{
-  sentence: "<span class='highlight'>Shall we go</span> out?",
-  choices: ["行かなければならないですか", "行きましょうか", "行けますか", "行くべきですか"],
-  correct: 1,
-  explanation: "▶ 行きましょうか／外へ<br>▶「Shall we ～?」は勧誘の表現です。"
-},
-{
-  sentence: "<span class='highlight'>Would you come</span> to my house tomorrow?",
-  choices: ["来られますか", "来るべきですか", "来てもらえますか", "来なければなりませんか"],
-  correct: 2,
-  explanation: "▶ 来てもらえますか／私の家に／明日<br>▶「Would you ～?」は丁寧な依頼を表します。"
-},
-{
-  sentence: "<span class='highlight'>Would you like</span> some coffee?",
-  choices: ["望んでいますか", "飲まなければなりませんか", "飲めますか", "飲むべきですか"],
-  correct: 0,
-  explanation: "▶ いかがですか／コーヒーは<br>▶「Would you like ～?」は勧める表現です。"
-},
-{
-  sentence: "I<span class='highlight'>'d like to ask</span> you some questions.",
-  choices: ["聞かなければならない", "聞くことができる", "聞きたい", "聞くべきだ"],
-  correct: 2,
-  explanation: "▶ 私は／聞きたい／あなたに／いくつかの質問を<br>▶「I'd like to ～」は「～したい」という丁寧な希望表現です。"
-}
- ]
-  },
-
-question: {
-    title: "📘 疑問詞",
-    questions: [
-{
-  sentence: "<span class='highlight'>Who</span> is your best friend?",
-  choices: ["だれ", "どこに", "いつ", "何を"],
-  correct: 0,
-  explanation: "▶ だれ／あなたのいちばんの友だちは<br>▶「Who」 は「だれ」という意味の疑問代名詞で、この例文では補語になります。"
-},
-{
-  sentence: "<span class='highlight'>What</span> do you like?",
-  choices: ["だれを", "どこに", "いつ", "何を"],
-  correct: 3,
-  explanation: "▶ 何を／あなたは／好んでいますか<br>▶「What」 は「何」という意味の疑問代名詞で、この例文では目的語になります。"
-},
-{
-  sentence: "<span class='highlight'>Where</span> do you live?",
-  choices: ["だれが", "どこに", "いつ", "何を"],
-  correct: 1,
-  explanation: "▶ どこに／あなたは／住んでいますか<br>▶「Where」 は「どこに」という意味の疑問副詞で、場所をたずねています。"
-},
-{
-  sentence: "<span class='highlight'>When</span> do you go to school?",
-  choices: ["だれを", "どこに", "いつ", "何を"],
-  correct: 2,
-  explanation: "▶ いつ／あなたは／行きますか／学校へ<br>▶「When」 は「いつ」という意味の疑問副詞で、時をたずねています。"
-},
-{
-  sentence: "<span class='highlight'>What time</span> do you get up?",
-  choices: ["何時に", "だれ", "どこに", "いつ"],
-  correct: 0,
-  explanation: "▶ 何時に／あなたは／起きますか<br>▶「What time」 は「何時に」という意味の疑問副詞で、時刻をたずねています。"
-},
-{
-  sentence: "<span class='highlight'>How</span> do you go to school?",
-  choices: ["だれ", "どこに", "いつ", "どうやって"],
-  correct: 3,
-  explanation: "▶ どうやって／あなたは／行きますか／学校へ<br>▶「How」 は「どうやって」という意味の疑問副詞で、方法をたずねています。"
-},
-{
-  sentence: "<span class='highlight'>How old</span> are you?",
-  choices: ["だれ", "どこに", "何歳", "いつ"],
-  correct: 2,
-  explanation: "▶ 何歳ですか／あなたは<br>▶「How old」 は「どのくらい年寄りか」という意味の疑問表現で、年齢をたずねています。"
-},
-{
-  sentence: "<span class='highlight'>Which color</span> do you like?",
-  choices: ["だれの色を", "どこの色を", "いつの色を", "どの色を"],
-  correct: 3,
-  explanation: "▶ どの色を／あなたは／好んでいますか<br>▶「Which color」 で「どの色を」という意味です。"
-}
- ]
-  },
-
-  pre01: {
-    title: "📘 前置詞01",
-    questions: [
-{
-  sentence: "I get up <span class='highlight'>at seven</span>.",
-  choices: ["7時から", "7時まで", "7時間", "7時に"],
-  correct: 3,
-  explanation: "▶ 私は／起きます／7時に<br>▶「at」は時刻を表すときに使います。"
-},
-{
-  sentence: "I was born <span class='highlight'>in 2010</span>.",
-  choices: ["2010年に", "2010年まで", "2010年間", "2010年から"],
-  correct: 0,
-  explanation: "▶ 私は／生まれました／2010年に<br>▶「in」は年・月など広い範囲の「とき」を表します。"
-},
-{
-  sentence: "We have English <span class='highlight'>on Monday</span>.",
-  choices: ["月曜日以外", "月曜日まで", "月曜日から", "月曜日に"],
-  correct: 3,
-  explanation: "▶ 私たちは／英語（の授業）があります／月曜日に<br>▶「on」は曜日や特定の「日」を表します。"
-},
-{
-  sentence: "I lived there <span class='highlight'>for three years</span>.",
-  choices: ["3年間", "3年に", "3年から", "3年までに"],
-  correct: 0,
-  explanation: "▶ 私は／住んでいました／そこに／3年間<br>▶「for」は期間を表します。"
-},
-{
-  sentence: "I read a book <span class='highlight'>during lunch</span>.",
-  choices: ["昼食の後に", "昼食の間に", "昼食まで", "昼食から"],
-  correct: 1,
-  explanation: "▶ 私は／読みました／本を／昼食の間に<br>▶「during」は「～の間に」という意味です。"
-},
-{
-  sentence: "I studied <span class='highlight'>until ten</span>.",
-  choices: ["10時に", "10時から", "10時まで", "10時までに"],
-  correct: 2,
-  explanation: "▶ 私は／勉強しました／10時まで<br>▶「until」は「～まで（ずっと）」という意味です。"
-},
-{
-  sentence: "Finish your homework <span class='highlight'>by five</span>.",
-  choices: ["5時に", "5時までに", "5時から", "5時間"],
-  correct: 1,
-  explanation: "▶ 終えなさい／あなたの宿題を／5時までに<br>▶「by」は「～までに（期限）」を表します。"
-},
-{
-  sentence: "I have lived here <span class='highlight'>since 2020</span>.",
-  choices: ["2020年まで", "2020年間", "2020年に", "2020年から"],
-  correct: 3,
-  explanation: "▶ 私は／ずっと住んでいます／2020年から<br>▶「since」は「～以来（起点）」を表します。"
-},
-{
-  sentence: "School starts <span class='highlight'>from April</span>.",
-  choices: ["4月まで", "4月に", "4月から", "4月の間"],
-  correct: 2,
-  explanation: "▶ 学校は／始まります／4月から<br>▶「from」は「～から」という起点を表します。"
-},
-{
-  sentence: "She is waiting <span class='highlight'>at the bus stop</span>.",
-  choices: ["バス停で", "バス停まで", "バス停から", "バス停の中に"],
-  correct: 0,
-  explanation: "▶ 彼女は／待っています／バス停で<br>▶「at」は狭い地点を表します。"
-},
-{
-  sentence: "The ball is <span class='highlight'>in the box</span>.",
-  choices: ["箱の上に", "箱の中に", "箱の前に", "箱の下に"],
-  correct: 1,
-  explanation: "▶ ボールは／あります／箱の中に<br>▶「in」は「～の中に」という意味です。"
-},
-{
-  sentence: "The book is <span class='highlight'>on the desk</span>.",
-  choices: ["机の下に", "机の横に", "机の中に", "机の上に"],
-  correct: 3,
-  explanation: "▶ 本は／あります／机の上に<br>▶「on」は「～の上に（接して）」という意味です。"
-},
-{
-  sentence: "The book is <span class='highlight'>under the bed</span>.",
-  choices: ["ベッドの下に", "ベッドの横に", "ベッドの中に", "ベッドの上に"],
-  correct: 0,
-  explanation: "▶ 本は／あります／ベッドの下に<br>▶「on」は「～の下に」という意味です。"
-},
-
-{
-  sentence: "A bridge is <span class='highlight'>over the river</span>.",
-  choices: ["川の横に", "川の下に", "川の上に", "川の中に"],
-  correct: 2,
-  explanation: "▶ 橋は／あります／川の上に<br>▶「over」は「～の上に（覆うように）」という意味です。"
-},
-{
-  sentence: "We talked <span class='highlight'>about music</span>.",
-  choices: ["音楽と", "音楽について", "音楽から", "音楽まで"],
-  correct: 1,
-  explanation: "▶ 私たちは／話しました／音楽について<br>▶「about」は「～について」という意味です。"
-}
- ]
-  },
-
-  conjunction: {
-    title: "📘 接続詞",
-    questions: [
-
-{
-  sentence: "<span class='highlight'>If</span> it is sunny, we will play soccer.",
-  choices: ["もし～なら", "～だけれども", "～するとき", "そして"],
-  correct: 0,
-  explanation: "▶ もし晴れるなら／私たちはサッカーをします<br>▶「if」は条件を表し、「もし～なら」という意味です。条件節は未来のことでも現在形で表現します。"
-},
-{
-  sentence: "<span class='highlight'>Though</span> he is young, he is very strong.",
-  choices: ["もし～なら", "～だけれども", "～するとき", "だから"],
-  correct: 1,
-  explanation: "▶ 彼は若いけれども／とても強い<br>▶「though」は逆接を表し、「～だけれども」という意味です。"
-},
-{
-  sentence: "I like math, <span class='highlight'>but</span> I don’t like science.",
-  choices: ["そして", "だから", "しかし", "もし～なら"],
-  correct: 2,
-  explanation: "▶ 私は数学が好きです／しかし／理科は好きではありません<br>▶「but」は逆接で「しかし」という意味です。"
-},
-{
-  sentence: "I know <span class='highlight'>that</span> she is kind.",
-  choices: ["～するとき", "～ということ", "もし～なら", "だから"],
-  correct: 1,
-  explanation: "▶ 私は知っています／彼女が親切だということを<br>▶「that」は名詞節を導き、「～ということ」という意味になります。"
-},
-{
-  sentence: "I play soccer <span class='highlight'>and</span> tennis.",
-  choices: ["または", "しかし", "そして", "だから"],
-  correct: 2,
-  explanation: "▶ 私は／します／サッカーとテニスを<br>▶「and」は「そして」という意味で語と語を結びます。"
-},
-{
-  sentence: "Do you want tea <span class='highlight'>or</span> juice?",
-  choices: ["そして", "または", "しかし", "だから"],
-  correct: 1,
-  explanation: "▶ あなたは／望んでいますか／お茶を／それともジュースを<br>▶「or」は選択を表し、「または」という意味です。"
-},
-{
-  sentence: "He was <span class='highlight'>so</span> tired <span class='highlight'>that</span> he went to bed early.",
-  choices: ["とても～なので…", "もし～なら", "～だけれども", "～するとき"],
-  correct: 0,
-  explanation: "▶ 彼は／とても疲れていたので／早く寝ました<br>▶「so ～ that …」は「とても～なので…」という結果を表します。"
-},
-{
-  sentence: "<span class='highlight'>Both</span> Tom <span class='highlight'>and</span> Ken like music.",
-  choices: ["どちらか一方", "両方とも", "どちらも～ない", "しかし"],
-  correct: 1,
-  explanation: "▶ トムとケンの両方とも／音楽が好きです<br>▶「both A and B」は「AもBも両方」という意味です。"
-},
-{
-  sentence: "You can choose <span class='highlight'>either</span> this book <span class='highlight'>or</span> that one.",
-  choices: ["両方とも", "どちらも～ない", "どちらか一方", "そして"],
-  correct: 2,
-  explanation: "▶ あなたは／選ぶことができる／どちらか一方を／この本かあの本の<br>▶「either A or B」は「AかBのどちらか」という意味です。"
-},
-{
-  sentence: "<span class='highlight'>Neither</span> my father <span class='highlight'>nor</span> my mother is at home.",
-  choices: ["だから", "両方とも～である", "どちらか一方", "どちらも～ない"],
-  correct: 3,
-  explanation: "▶ 父も母も／いません／家に<br>▶「neither A nor B」は「AもBも～ない」という意味です。"
-},
-{
-  sentence: "She can speak <span class='highlight'>not only</span> English <span class='highlight'>but also</span> French.",
-  choices: ["どちらも～ない", "どちらか一方", "AだけでなくBも", "しかし"],
-  correct: 2,
-  explanation: "▶ 彼女は／話すことができる／英語だけでなくフランス語も<br>▶「not only A but also B」は「AだけでなくBも」という意味です。"
-},
-{
-  sentence: "Study hard, <span class='highlight'>and</span> you will pass the test.",
-  choices: ["さもないと", "そうすれば", "しかし", "もし～なら"],
-  correct: 1,
-  explanation: "▶ 一生懸命勉強しなさい、そうすれば試験に合格します<br>▶ 命令文＋and は「～しなさい、そうすれば…」という意味です。"
-},
-{
-  sentence: "Hurry up, <span class='highlight'>or</span> you will miss the bus.",
-  choices: ["そして", "しかし", "だから", "さもないと"],
-  correct: 3,
-  explanation: "▶ 急ぎなさい、さもないとバスに乗り遅れます<br>▶ 命令文＋or は「～しなさい、さもないと…」という意味です。"
-},
-{
-  sentence: "I stayed home <span class='highlight'>because</span> I was sick.",
-  choices: ["～する前に", "なぜなら～だから", "～だけれども", "その間に"],
-  correct: 1,
-  explanation: "▶ 私は／家にいました／なぜなら病気だったから<br>▶「because」は理由を表し、「なぜなら～だから」という意味です。"
-},
-{
-  sentence: "It was very cold, <span class='highlight'>so</span> I stayed home.",
-  choices: ["だから", "しかし", "～する前に", "その間に"],
-  correct: 0,
-  explanation: "▶ とても寒かった／だから／私はいた／家に<br>▶「so」は結果を表し、「だから」という意味です。"
-},
-{
-  sentence: "Brush your teeth <span class='highlight'>before</span> you go to bed.",
-  choices: ["～した後で", "なぜなら～だから", "～する前に", "～だけれども"],
-  correct: 2,
-  explanation: "▶ 歯をみがきなさい／寝る前に<br>▶「before」は「～する前に」という意味です。"
-},
-{
-  sentence: "I did my homework <span class='highlight'>after</span> I got home.",
-  choices: ["～する前に", "～した後で", "だから", "その間に"],
-  correct: 1,
-  explanation: "▶ 私はやった／宿題を／家に帰った後で<br>▶「after」は「～した後で」という意味です。"
-},
-{
-  sentence: "I have lived here <span class='highlight'>since</span> I was five.",
-  choices: ["～の間に", "～だけれども", "だから", "～以来ずっと"],
-  correct: 3,
-  explanation: "▶ 私は／ずっと住んでいます／ここに／私が5歳のときから<br>▶「since」は「～以来ずっと」という意味で使われます。"
-},
-{
-  sentence: "My mother was cooking <span class='highlight'>while</span> I was studying.",
-  choices: ["～する間に", "～する前に", "なぜなら～だから", "だから"],
-  correct: 0,
-  explanation: "▶ 母は／料理をしていました／私が勉強している間に<br>▶「while」は「～している間に」という意味です。"
-},
-{
-  sentence: "<span class='highlight'>Although</span> it was raining, we played soccer.",
-  choices: ["なぜなら～だから", "だから", "～の間に", "～だけれども"],
-  correct: 3,
-  explanation: "▶ 雨が降っていたけれども／私たちはサッカーをしました<br>▶「although」は逆接を表し、「～だけれども」という意味です。"
-}
- ]
-  },
-conjunction: {
-    title: "📘 接続詞",
-    questions: [
-
-{
-  sentence: "<span class='highlight'>If</span> it is sunny, we will play soccer.",
-  choices: ["もし～なら", "～だけれども", "～するとき", "そして"],
-  correct: 0,
-  explanation: "▶ もし晴れるなら／私たちはサッカーをします<br>▶「if」は条件を表し、「もし～なら」という意味です。条件節は未来のことでも現在形で表現します。"
-},
-{
-  sentence: "<span class='highlight'>Though</span> he is young, he is very strong.",
-  choices: ["もし～なら", "～だけれども", "～するとき", "だから"],
-  correct: 1,
-  explanation: "▶ 彼は若いけれども／とても強い<br>▶「though」は逆接を表し、「～だけれども」という意味です。"
-},
-{
-  sentence: "I like math, <span class='highlight'>but</span> I don’t like science.",
-  choices: ["そして", "だから", "しかし", "もし～なら"],
-  correct: 2,
-  explanation: "▶ 私は数学が好きです／しかし／理科は好きではありません<br>▶「but」は逆接で「しかし」という意味です。"
-},
-{
-  sentence: "I know <span class='highlight'>that</span> she is kind.",
-  choices: ["～するとき", "～ということ", "もし～なら", "だから"],
-  correct: 1,
-  explanation: "▶ 私は知っています／彼女が親切だということを<br>▶「that」は名詞節を導き、「～ということ」という意味になります。"
-},
-{
-  sentence: "I play soccer <span class='highlight'>and</span> tennis.",
-  choices: ["または", "しかし", "そして", "だから"],
-  correct: 2,
-  explanation: "▶ 私は／します／サッカーとテニスを<br>▶「and」は「そして」という意味で語と語を結びます。"
-},
-{
-  sentence: "Do you want tea <span class='highlight'>or</span> juice?",
-  choices: ["そして", "または", "しかし", "だから"],
-  correct: 1,
-  explanation: "▶ あなたは／望んでいますか／お茶を／それともジュースを<br>▶「or」は選択を表し、「または」という意味です。"
-},
-{
-  sentence: "He was <span class='highlight'>so</span> tired <span class='highlight'>that</span> he went to bed early.",
-  choices: ["とても～なので…", "もし～なら", "～だけれども", "～するとき"],
-  correct: 0,
-  explanation: "▶ 彼は／とても疲れていたので／早く寝ました<br>▶「so ～ that …」は「とても～なので…」という結果を表します。"
-},
-{
-  sentence: "<span class='highlight'>Both</span> Tom <span class='highlight'>and</span> Ken like music.",
-  choices: ["どちらか一方", "両方とも", "どちらも～ない", "しかし"],
-  correct: 1,
-  explanation: "▶ トムとケンの両方とも／音楽が好きです<br>▶「both A and B」は「AもBも両方」という意味です。"
-},
-{
-  sentence: "You can choose <span class='highlight'>either</span> this book <span class='highlight'>or</span> that one.",
-  choices: ["両方とも", "どちらも～ない", "どちらか一方", "そして"],
-  correct: 2,
-  explanation: "▶ あなたは／選ぶことができる／どちらか一方を／この本かあの本の<br>▶「either A or B」は「AかBのどちらか」という意味です。"
-},
-{
-  sentence: "<span class='highlight'>Neither</span> my father <span class='highlight'>nor</span> my mother is at home.",
-  choices: ["だから", "両方とも～である", "どちらか一方", "どちらも～ない"],
-  correct: 3,
-  explanation: "▶ 父も母も／いません／家に<br>▶「neither A nor B」は「AもBも～ない」という意味です。"
-},
-{
-  sentence: "She can speak <span class='highlight'>not only</span> English <span class='highlight'>but also</span> French.",
-  choices: ["どちらも～ない", "どちらか一方", "AだけでなくBも", "しかし"],
-  correct: 2,
-  explanation: "▶ 彼女は／話すことができる／英語だけでなくフランス語も<br>▶「not only A but also B」は「AだけでなくBも」という意味です。"
-},
-{
-  sentence: "Study hard, <span class='highlight'>and</span> you will pass the test.",
-  choices: ["さもないと", "そうすれば", "しかし", "もし～なら"],
-  correct: 1,
-  explanation: "▶ 一生懸命勉強しなさい、そうすれば試験に合格します<br>▶ 命令文＋and は「～しなさい、そうすれば…」という意味です。"
-},
-{
-  sentence: "Hurry up, <span class='highlight'>or</span> you will miss the bus.",
-  choices: ["そして", "しかし", "だから", "さもないと"],
-  correct: 3,
-  explanation: "▶ 急ぎなさい、さもないとバスに乗り遅れます<br>▶ 命令文＋or は「～しなさい、さもないと…」という意味です。"
-},
-{
-  sentence: "I stayed home <span class='highlight'>because</span> I was sick.",
-  choices: ["～する前に", "なぜなら～だから", "～だけれども", "その間に"],
-  correct: 1,
-  explanation: "▶ 私は／家にいました／なぜなら病気だったから<br>▶「because」は理由を表し、「なぜなら～だから」という意味です。"
-},
-{
-  sentence: "It was very cold, <span class='highlight'>so</span> I stayed home.",
-  choices: ["だから", "しかし", "～する前に", "その間に"],
-  correct: 0,
-  explanation: "▶ とても寒かった／だから／私はいた／家に<br>▶「so」は結果を表し、「だから」という意味です。"
-},
-{
-  sentence: "Brush your teeth <span class='highlight'>before</span> you go to bed.",
-  choices: ["～した後で", "なぜなら～だから", "～する前に", "～だけれども"],
-  correct: 2,
-  explanation: "▶ 歯をみがきなさい／寝る前に<br>▶「before」は「～する前に」という意味です。"
-},
-{
-  sentence: "I did my homework <span class='highlight'>after</span> I got home.",
-  choices: ["～する前に", "～した後で", "だから", "その間に"],
-  correct: 1,
-  explanation: "▶ 私はやった／宿題を／家に帰った後で<br>▶「after」は「～した後で」という意味です。"
-},
-{
-  sentence: "I have lived here <span class='highlight'>since</span> I was five.",
-  choices: ["～の間に", "～だけれども", "だから", "～以来ずっと"],
-  correct: 3,
-  explanation: "▶ 私は／ずっと住んでいます／ここに／私が5歳のときから<br>▶「since」は「～以来ずっと」という意味で使われます。"
-},
-{
-  sentence: "My mother was cooking <span class='highlight'>while</span> I was studying.",
-  choices: ["～する間に", "～する前に", "なぜなら～だから", "だから"],
-  correct: 0,
-  explanation: "▶ 母は／料理をしていました／私が勉強している間に<br>▶「while」は「～している間に」という意味です。"
-},
-{
-  sentence: "<span class='highlight'>Although</span> it was raining, we played soccer.",
-  choices: ["なぜなら～だから", "だから", "～の間に", "～だけれども"],
-  correct: 3,
-  explanation: "▶ 雨が降っていたけれども／私たちはサッカーをしました<br>▶「although」は逆接を表し、「～だけれども」という意味です。"
-}
- ]
-  },
-
-   infinitive01: {
-    title: "📘 不定詞01",
-    questions: [
-{
-  sentence: "I had no time <span class='highlight'>to do my homework</span>.",
-  choices: ["宿題をするための", "宿題をすることを", "宿題をして", "宿題をするために"],
-  correct: 0,
-  explanation: "▶ 私は/持っていた/ゼロの時間を/宿題をするための<br>▶「to do」は「するための」という意味で、「time」 を説明する形容詞的用法です。"
-},
-{
-  sentence: "He went to the park <span class='highlight'>to play tennis</span>.",
-  choices: ["テニスをして", "テニスをするために", "テニスをすることを", "テニスをするための"],
-  correct: 1,
-  explanation: "▶ 彼は/行きました/公園へ/テニスをするために<br>▶「to play」は「するために」という意味で、目的を表す副詞的用法です。"
-},
-{
-  sentence: "I want <span class='highlight'>to visit</span> Australia.",
-  choices: ["訪れて", "訪れるために", "訪れることを", "訪れるための"],
-  correct: 2,
-  explanation: "▶ 私は/望んでいる/訪れることを/オーストラリアを<br>▶「to visit」は 「訪れることを」という意味で、「want」 の目的語になる名詞的用法です。"
-},
-{
-  sentence: "He has a dream <span class='highlight'>to be a singer</span>.",
-  choices: ["歌手になるために", "歌手になるための", "歌手になることを", "歌手になるという"],
-  correct: 3,
-  explanation: "▶ 彼は/持っている/一つの夢を/歌手になるという<br>▶「to be a singer」 は 「dream」 の内容を説明する同格の不定詞です。"
-},
-{
-  sentence: "Aki got up early <span class='highlight'>to help his mother</span>.",
-  choices: ["母を助けるために", "母を助けて", "母を助けることを", "母を助けるための"],
-  correct: 0,
-  explanation: "▶ アキは/起きました/早く/手伝うために/お母さんを<br>▶「to help」は「手伝うために」という意味で、目的を表す副詞的用法です。"
-},
-{
-  sentence: "I am glad <span class='highlight'>to see you again</span>.",
-  choices: ["またあなたに会うことを", "またあなたに会って", "またあなたに会うために", "またあなたに会うための"],
-  correct: 1,
-  explanation: "▶ 私は/うれしい/あなたに会って/また<br>▶「to see you again」は 「あなたに会って」という意味で、「glad」 という感情の原因を表しています。"
-},
-{
-  sentence: "<span class='highlight'>To play tennis</span> is a lot of fun.",
-  choices: ["テニスをすることは", "テニスをするために", "テニスをして", "テニスをするための"],
-  correct: 0,
-  explanation: "▶ テニスをすることは/とても楽しい<br>▶「to play tennis」は、「テニスをすることは」という意味で、不定詞が文の主語として使われている名詞的用法です。"
-},
-{
-  sentence: "I want something cold <span class='highlight'>to drink</span>.",
-  choices: ["飲むことを", "飲んで", "飲むために", "飲むための"],
-  correct: 3,
-  explanation: "▶ 私は/望んでいる/冷たい何かを/飲むための<br>▶「to drink」は 「飲むための」という意味で、「something cold」 を説明する形容詞的用法です。"
-}
- ]
-  },
-
-  infinitive02: {
-    title: "📘 不定詞02",
+infinitive02: {
+    title: "📗 不定詞02",
     questions: [
 {
   sentence: "She bought some eggs <span class='highlight'>to make a cake</span>.",
@@ -872,9 +862,149 @@ conjunction: {
   choices: ["起きるために", "起きて", "起きるべき", "起きることを"],
   correct: 3,
   explanation: "▶ あなたは／必要としている／起きることを／早く／毎朝<br>▶「to get up」は「起きることを」という意味で、「need」 の目的語になる名詞的用法です。"
+},
+{
+  sentence: "<span class='highlight'>Reading</span> books is fun.",
+  choices: ["読むために", "読んで", "読むことは", "読むための"],
+  correct: 2,
+  explanation: "▶ 本を読むことは／楽しい。<br>▶「Reading books」は動名詞が主語になり、「本を読むことは」という意味になります。"
+},
+{
+  sentence: "<span class='highlight'>Playing</span> soccer is exciting.",
+  choices: ["するための", "することは", "して", "するために"],
+  correct: 1,
+  explanation: "▶ サッカーをすることは／わくわくする。<br>▶「Playing soccer」は動名詞が主語になり、「サッカーをすることは」という意味になります。"
+},
+{
+  sentence: "<span class='highlight'>Learning</span> English is important.",
+  choices: ["学ぶことは", "学んで", "学ぶための", "学ぶために"],
+  correct: 0,
+  explanation: "▶ 英語を学ぶことは／大切です。<br>▶「Learning English」は動名詞が主語になり、「英語を学ぶことは」という意味になります。"
+},
+{
+  sentence: "I like <span class='highlight'>reading</span> books.",
+  choices: ["読むために", "読むことを", "読むための", "読んで"],
+  correct: 1,
+  explanation: "▶ 私は／好んでいる／本を読むことを<br>▶「reading books」は動名詞で、「like」の目的語になり、「本を読むことを」という意味になります。"
+},
+{
+  sentence: "She enjoys <span class='highlight'>playing</span> tennis.",
+  choices: ["することを", "して", "するために", "するための"],
+  correct: 0,
+  explanation: "▶ 彼女は／楽しみます／テニスをすることを<br>▶「playing tennis」は動名詞で、「enjoys」の目的語になり、「テニスをすることを」という意味になります。「enjoy」の目的語に「不定詞」は使われません。"
+},
+{
+  sentence: "We started <span class='highlight'>studying</span> English.",
+  choices: ["勉強するための", "勉強して", "勉強することを", "勉強するために"],
+  correct: 2,
+  explanation: "▶ 私たちは／始めました／勉強することを／英語を<br>▶「studying English」は動名詞で、「started」の目的語になり、「英語を勉強することを」という意味になります。"
 }
  ]
   },
+
+clauseparticiple: {
+    title: "📗 節・分詞で修飾",
+    questions: [
+{
+  sentence: "I know the boy <span class='highlight'>playing soccer</span>.",
+  choices: ["サッカーをされた", "サッカーをしている", "サッカーをする", "サッカーをされる"],
+  correct: 1,
+  explanation: "▶ 私は／知っている／少年を／サッカーをしている<br>▶「the boy playing succer」は「サッカーをしている少年」という意味で、「playing soccer」が「the boy」を説明しています。「playing」は「play」の現在分詞です。"
+},
+{
+  sentence: "She looked at the dog <span class='highlight'>running</span> in the park.",
+  choices: ["走っている", "走られる", "走った", "走られた"],
+  correct: 0,
+  explanation: "▶ 彼女は／見た／犬を／走っている<br>▶「the dog running」は「走っている犬」という意味です。「running」は「run」の現在分詞です。"
+},
+{
+  sentence: "We saw a girl <span class='highlight'>singing a song</span>.",
+  choices: ["歌を歌われる", "歌を歌った", "歌を歌っている", "歌を歌われた"],
+  correct: 2,
+  explanation: "▶ 私たちは／見た／少女を／歌を歌っている<br>▶「a girl singing a song」は「歌を歌っている少女」という意味です。「singing」は「sing」の現在分詞です。"
+},
+{
+  sentence: "That is a bus <span class='highlight'>going to the station</span>.",
+  choices: ["駅に行かない", "駅に行く", "駅から来た", "駅に行った"],
+  correct: 1,
+  explanation: "▶ あれは／バスです／駅に行く<br>▶「the bus going to the station」は「駅に向かうバス」という意味です。「going」は「go」の現在分詞です。"
+},
+{
+  sentence: "I have a friend <span class='highlight'>living in Tokyo</span>.",
+  choices: ["東京に引っ越した", "東京に住んでいた", "東京に住んでいる", "東京で生まれた"],
+  correct: 2,
+  explanation: "▶ 私は／友達がいる／東京に住んでいる<br>▶「a friend living in Tokyo」は「東京に住んでいる友達」という意味です。「living」は「live」の現在分詞です。"
+},
+{
+  sentence: "I read the book <span class='highlight'>written in English</span>.",
+  choices: ["英語で書かれた", "英語が書いている", "英語を書く", "英語に書かれた"],
+  correct: 0,
+  explanation: "▶ 私は／読んだ／本を／英語で書かれた<br>▶「the book written in English」は「英語で書かれた本」という意味です。「written」は「write」の過去分詞です。"
+},
+{
+  sentence: "She ate the cake <span class='highlight'>made</span> by her mother.",
+  choices: ["作っている", "作られた", "作るだろう", "作るつもり"],
+  correct: 1,
+  explanation: "▶ 彼女は／食べた／ケーキを／作られた／母によって<br>▶「the cake made」は「作られたケーキ」という意味です。「made」は「make」の過去分詞です。"
+},
+{
+  sentence: "We visited the museum <span class='highlight'>built</span> last year.",
+  choices: ["建てている", "建てる予定の", "建てられた", "建てられる"],
+  correct: 2,
+  explanation: "▶ 私たちは／訪れた／博物館を／建てられた／去年<br>▶「the museum built」は「建てられた博物館」という意味です。「built」は「build」の過去分詞です。"
+},
+{
+  sentence: "We found a bike <span class='highlight'>left</span> in the park.",
+  choices: ["置かれた", "置いている", "置かれる", "置いた"],
+  correct: 0,
+  explanation: "▶ 私たちは／見つけた／自転車を／置かれた／公園に<br>▶「the bike left」は「置かれた（放置された）自転車」という意味です。「left」は「leave」の過去分詞です。"
+},
+{
+  sentence: "This is a picture <span class='highlight'>taken</span> by Ken.",
+  choices: ["撮られた", "撮っている", "撮る", "撮られる"],
+  correct: 0,
+  explanation: "▶ これは／写真です／撮られた／ケンによって<br>▶「a picture taken」は「撮られた写真」という意味です。「taken」は「take」の過去分詞です。"
+},
+{
+  sentence: "This is the book <span class='highlight'>I bought</span> yesterday.",
+  choices: ["私が買った", "私が買われた", "私が買っている", "私が買うつもりの"],
+  correct: 0,
+  explanation: "▶ これは／本です／私が買った／昨日<br>▶「the book I bought」は「私が買った本」という意味で、目的格の関係代名詞が省略された形です。"
+},
+{
+  sentence: "That is the movie <span class='highlight'>we watched</span> last night.",
+  choices: ["私たちが見られた", "私たちが見た", "私たちが見られる", "私たちが見ている"],
+  correct: 1,
+  explanation: "▶ あれは／映画です／私たちが見た／昨夜<br>▶「the movie we watched」は「私たちが見た映画」という意味で、目的格の関係代名詞が省略された形です。"
+},
+{
+  sentence: "This is the cake <span class='highlight'>my mother made</span>.",
+  choices: ["母が作られた", "母が作っている", "母が作るだろう", "母が作った"],
+  correct: 3,
+  explanation: "▶ これは／ケーキです／母が作った<br>▶「the cake my mother made」は「母が作ったケーキ」という意味で、目的格の関係代名詞が省略された形です。"
+},
+{
+  sentence: "This is the game <span class='highlight'>we played</span> after school.",
+  choices: ["私たちがした", "私たちがされる", "私たちがしている", "私たちがする予定の"],
+  correct: 0,
+  explanation: "▶ これは／ゲームです／私たちがした／放課後<br>▶「the game we played」は「私たちがしたゲーム」という意味で、目的格の関係代名詞が省略された形です。"
+},
+{
+  sentence: "She showed me the picture <span class='highlight'>she took</span>.",
+  choices: ["彼女が撮られた", "彼女が撮る", "彼女が撮っている", "彼女が撮った"],
+  correct: 3,
+  explanation: "▶ 彼女は／見せた／写真を／彼女が撮った<br>▶「the picture she took」は「彼女が撮った写真」という意味で、目的格の関係代名詞が省略された形です。"
+}
+ ]
+  },
+
+
+
+
+
+
+
+
 }
 
 
@@ -888,6 +1018,7 @@ const state = {
   // modeSelect | studyMenu | studyQuestion | studyResult
   // chainMenu | chainQuestion | chainResult
   screen: "modeSelect",
+  
 
   // ===== 学習モード =====
   study: {
@@ -908,6 +1039,7 @@ const state = {
     viewingPrevious: false
   },
 
+  
   // ===== 永続データ =====
   progress: {
     // tense: { correct: 5, total: 5, star: true }
@@ -917,8 +1049,15 @@ const state = {
 
   studyResults: {},
 
+    weakQuestions: JSON.parse(localStorage.getItem("weakQuestions")) || {},
+
   maxChain: 0
+
+ 
 };
+
+let weakQuestions = JSON.parse(localStorage.getItem("weakQuestions") || "[]");
+
 
 // ★ ここ追加
 state.maxChain = Number(localStorage.getItem("maxChain") || 0);
@@ -1003,6 +1142,7 @@ function load() {
 
 load();
 
+
 // ==========================
 // state 定義
 // ==========================
@@ -1025,6 +1165,47 @@ function shuffleArray(arr) {
   return a;
 }
 
+/*********************************************************
+ * 弱点問題を保存
+ *********************************************************/
+
+
+function saveWeakQuestions() {
+  localStorage.setItem(
+    "weakQuestions",
+    JSON.stringify(state.weakQuestions)
+  );
+}
+
+function addWeakQuestion(q) {
+
+  const key = q.sentence;
+
+  if (!state.weakQuestions[key]) {
+    state.weakQuestions[key] = {
+      data: q,
+      success: 0
+    };
+  }
+
+  saveWeakQuestions();
+}
+
+function successWeakQuestion(q) {
+
+  const key = q.sentence;
+
+  if (!state.weakQuestions[key]) return;
+
+  state.weakQuestions[key].success++;
+
+  if (state.weakQuestions[key].success >= 2) {
+    delete state.weakQuestions[key];
+  }
+
+  saveWeakQuestions();
+}
+
 
 /*********************************************************
  * render（画面切替の司令塔）
@@ -1032,12 +1213,13 @@ function shuffleArray(arr) {
 
 function render() {
 
-   console.log("render called", state.mode);
+  console.log("render called", state.mode);
 
   const app = document.getElementById("app");
   app.innerHTML = "";
 
   switch (state.screen) {
+
     case "modeSelect":
       renderModeSelect(app);
       break;
@@ -1064,6 +1246,10 @@ function render() {
 
     case "chainResult":
       renderChainResult(app);
+      break;
+
+    case "weakChainMenu":
+      renderWeakChainMenu(app);
       break;
 
     default:
@@ -1136,9 +1322,58 @@ function startChainMode() {
   state.chain.startMaxChain = state.maxChain;
 state.chain.newRecord = false;
 
+state.chain.isWeak = false   // ★追加
+
   state.screen = "chainQuestion";
   render();
 }
+
+
+
+function getWeakQuestions() {
+
+  const weak = state.weakQuestions;
+
+  return Object.values(weak).map(w => w.data);
+
+}
+
+function goWeakChainMenu() {
+  state.screen = "weakChainMenu";
+  render();
+}
+
+function startWeakChainMode() {
+
+  const weakQuestions = getWeakQuestions();
+
+  console.log("weakQuestions:", weakQuestions);
+
+  if (!weakQuestions || weakQuestions.length === 0) {
+    alert("弱点問題はありません 👍 学習モードで問題を解きましょう");
+    return;
+  }
+
+  const chain = state.chain;
+
+  chain.questions = shuffleArray(weakQuestions);
+  chain.index = 0;
+  chain.correctStreak = 0;
+  chain.maxStreak = 0;
+  chain.finished = false;
+  chain.answered = false;
+
+  chain.milestone = null;
+  chain.newRecord = false;
+
+  chain.startMaxChain = state.maxChain;
+  chain.isWeak = true;   // 弱点連チャンモード
+
+  state.screen = "chainQuestion";
+
+  render();
+}
+
 
 /*********************************************************
  * 各画面の仮render
@@ -1148,6 +1383,7 @@ state.chain.newRecord = false;
 function renderModeSelect(root) {
   const totalStars = getTotalStars();
   const maxChain = state.maxChain;
+  const weakCount = Object.keys(state.weakQuestions || {}).length;
 
   console.log("stars at mode select:", state.stars);
 
@@ -1185,13 +1421,26 @@ function renderModeSelect(root) {
         
       </button>
 
-      <p class="version">ver 1.0</p>
+    <div class="mode-card">
+      <button id="weakChainBtn" class="mode-btn">
+        💥 弱点連チャンモード
+         <div class="mode-sub">
+          弱点問題数  ${weakCount}問
+         </div>
+        
+      </button>
+
+     
+      <p class="version">ver 1.2</p>
     </div>
   `;
 
   document.getElementById("studyBtn").onclick = goStudyMenu;
   document.getElementById("chainBtn").onclick = goChainMenu;
-
+  document.getElementById("weakChainBtn").onclick = () => {
+  state.screen = "weakChainMenu";
+  render();
+};
 
   const resetBtn = document.getElementById("resetChain");
 
@@ -1319,6 +1568,7 @@ function renderStudyQuestion() {
             if (answered) {
               if (i === q.correct) cls += " correct";
               else if (i === answered.selected) cls += " wrong";
+              
             }
             return `<button class="${cls}" data-index="${i}" ${answered ? "disabled" : ""}>${choice}</button>`;
           }).join("")}
@@ -1339,20 +1589,29 @@ function renderStudyQuestion() {
   
 
   // 選択肢
-  document.querySelectorAll(".choice").forEach(btn => {
-    btn.onclick = () => {
-      if (answered) return;
+document.querySelectorAll(".choice").forEach(btn => {
+  btn.onclick = () => {
+    if (answered) return;
 
-      const selected = Number(btn.dataset.index);
-      const isCorrect = selected === q.correct;
+    const selected = Number(btn.dataset.index);
+    const isCorrect = selected === q.correct;
 
-      study.answers[study.index] = { selected, isCorrect };
-      if (isCorrect) study.correctCount++;
+    study.answers[study.index] = { selected, isCorrect };
 
-      playSound(isCorrect ? "correct" : "wrong");
-      render();
-    };
-  });
+        // ===== 弱点処理 =====
+    if (isCorrect) {
+      study.correctCount++;
+      successWeakQuestion(q);
+
+    } else {
+      addWeakQuestion(q);
+    }
+
+    playSound(isCorrect ? "correct" : "wrong");
+    render();
+  };
+});
+
 
   // 解説
   if (answered) {
@@ -1552,9 +1811,15 @@ function renderStudyResult(root) {
 }
 
 function renderChainMenu(root) {
-  root.innerHTML = `
-    <h2>🔥 連チャンモード</h2>
 
+  const chain = state.chain;  // ← これを追加
+
+  root.innerHTML = `
+
+   <h2>🔥 連チャンモード</h2>
+
+  
+    
     <div class="mode-study">
       <img src="images/cw01.png" class="mode-cat">
     </div>
@@ -1566,7 +1831,8 @@ function renderChainMenu(root) {
   </div>
 
     <button id="startBtn">🔥 GAME START</button>
-    
+   
+
      <div class="bottom-nav">
     <button id="backBtn" class="mode-btn">◀モード選択へ</button>
     </div>
@@ -1611,10 +1877,18 @@ function renderChainQuestion(root) {
 
   const chain = state.chain;
   const q = chain.questions[chain.index];
+
+   if (!q) {
+    console.error("問題が取得できません", chain);
+    root.innerHTML = "<p>問題が読み込めませんでした</p>";
+    return;
+  }
+
   const answered = chain.answered;
 
   root.innerHTML = `
-   <h2>🔥 連チャンモード</h2>
+   <h2>${chain.isWeak ? "💥 弱点連チャンモード" : "🔥 連チャンモード"}</h2>
+
 
     <div class="question-area">
       <div class="question">${q.sentence}</div> 
@@ -1674,6 +1948,11 @@ function renderChainQuestion(root) {
   chain.answered = { selected, isCorrect: true };
   chain.correctStreak++;
 
+  // ★追加（弱点克服）
+  if (chain.isWeak) {
+    successWeakQuestion(q);
+  }
+
   chain.maxStreak = Math.max(chain.maxStreak, chain.correctStreak);
 
   const isNewRecord = (chain.correctStreak === chain.startMaxChain + 1);
@@ -1725,6 +2004,8 @@ function renderChainQuestion(root) {
   playSound("wrong");
 
   chain.correctStreak = 0;
+
+   addWeakQuestion(q);
 
   render();
 }
@@ -1789,7 +2070,7 @@ function renderChainResult(root) {
   const chain = state.chain;
 
   root.innerHTML = `
-    <h2>🔥 連チャン結果</h2>
+    <h2>${chain.isWeak ? "💥 弱点連チャン結果" : "🔥 連チャン結果"}</h2>
 
     <div class="cat-jump">
       <img src="images/cw02.png" class="mode-cat">
@@ -1799,25 +2080,88 @@ function renderChainResult(root) {
       ${chain.maxStreak} 連チャン
     </div>
 
-
-     ${chain.isNewRecord ? `
+    ${chain.isNewRecord ? `
     <div class="new-record">
       🔥 NEW RECORD！🎉
     </div>
-  ` : ""}
+    ` : ""}
 
     <div class="chain-best">
       最高記録：${state.maxChain}
     </div>
 
     <button id="chainBtn">メニューへ</button>
-    
     <button id="modeBtn">モード選択へ</button>
   `;
 
-  document.getElementById("chainBtn").onclick = goChainMenu;
-  
+  document.getElementById("chainBtn").onclick = () => {
+
+    if (state.chain.isWeak) {
+      state.screen = "weakChainMenu";
+    } else {
+      state.screen = "chainMenu";
+    }
+
+    render();
+  };
+
   document.getElementById("modeBtn").onclick = goModeSelect;
+}
+
+
+
+function renderWeakChainMenu(root) {
+
+  const weakCount = getWeakQuestions().length;
+
+  root.innerHTML = `
+
+    <h2>💥 弱点連チャンモード</h2>
+
+     <div class="mode-study">
+      <img src="images/csad02.png" class="mode-cat">
+    </div>
+
+    <p>弱点問題：${weakCount}問</p>
+
+    <button id="startWeakChain">スタート</button>
+
+
+     <div class="note">弱点問題：じっくり学習モード、連チャンモードで間違えた問題が出題されます。2回正解すると出題されなくなります。</div>
+
+    <div class="bottom-nav">
+    <button id="backMode" class="mode-btn">モード選択へ</button>
+    </div>
+
+  `;
+
+  document
+    .getElementById("startWeakChain")
+    .onclick = startWeakChainMode;
+
+  document
+    .getElementById("backMode")
+    .onclick = () => {
+
+      state.screen = "modeSelect";
+      render();
+
+    };
+
+}
+
+function generateChoices(correct) {
+
+  const all = vocabulary.map(v => v.meaning);
+
+  const shuffled = all
+    .filter(m => m !== correct)
+    .sort(() => Math.random() - 0.5)
+    .slice(0,3);
+
+  shuffled.push(correct);
+
+  return shuffled.sort(() => Math.random() - 0.5);
 }
 
 /*********************************************************
@@ -1867,11 +2211,7 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js")
     .then(() => console.log("SW registered"))
     .catch(err => console.error("SW failed", err));
-
 }
-
-
-
 
 
 
