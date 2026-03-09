@@ -242,9 +242,7 @@ button:disabled {
     font-size: 16px;
     padding: 12px 0;
   }
-
   
-
   .menu-title {
     font-size: 16px;
   }
@@ -263,7 +261,6 @@ button:disabled {
   text-align: center;
   margin: 20px 0;
 }
-
 
 .evaluation img {
   max-width: 200px;
@@ -362,9 +359,6 @@ button:disabled {
   background: #f0f0f0;
 }
 
-
-
-
 .mode-sub {
   margin-top: 8px;
   font-size: 1.0rem;
@@ -392,7 +386,6 @@ button:disabled {
   font-size: 16px;
   border-radius: 12px;
 }
-
 
 .choice {
   display: block;
@@ -484,7 +477,6 @@ button:disabled {
 .screen.chain {
   background: #fff3e0;
 }
-
 
 .question {
   font-size: 1.2rem;
@@ -579,8 +571,6 @@ button:disabled {
   animation: pop 0.3s ease;
 }
 
-
-
 .record-popup {
    position: fixed;
   top: 30%;
@@ -603,8 +593,6 @@ button:disabled {
 .record-popup.correct {
   color: #2ecc71;
 }
-
-
 
 @keyframes pop {
   0% { transform: scale(0.8); opacity: 0; }
@@ -646,10 +634,6 @@ button:disabled {
   height: auto;
   animation: float 3s ease-in-out infinite;
 }
-
-
-
-
 
 /* ふわふわ浮く */
 @keyframes float {
