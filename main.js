@@ -576,7 +576,7 @@ conjunction02: {
 },
 {
   sentence: "She can speak <span class='highlight'>not only</span> English <span class='highlight'>but also</span> French.",
-  choices: ["どちらも～ない", "どちらか一方", "AだけでなくBも", "しかし"],
+  choices: ["英語とフランス語のどちらも話せない", "英語とフランス語のどちらか一方は話せる", "英語だけでなくフランス語も話せる", "英語は話せる、フランス語はだめだけど"],
   correct: 2,
   explanation: "▶ 彼女は／話すことができる／英語だけでなくフランス語も<br>▶「not only A but also B」は「AだけでなくBも」という意味です。"
 },
@@ -1015,53 +1015,63 @@ clauseparticiple: {
  *********************************************************/
 
 const state = {
-  // 現在表示している画面
-  // modeSelect | studyMenu | studyQuestion | studyResult
-  // chainMenu | chainQuestion | chainResult
+
+  // ===== 現在の画面 =====
   screen: "modeSelect",
-  
 
   // ===== 学習モード =====
   study: {
-    categoryKey: null,        // 現在の単元
-    questions: [],            // 出題問題配列
-    index: 0,                 // 現在の問題番号
-    answers: [],              // 各問題の選択結果
-    correctCount: 0,          // 正解数
-    viewingPrevious: false    // 前の問題を見ているか
+    categoryKey: null,
+    questions: [],
+    index: 0,
+    answers: [],
+    correctCount: 0,
+    viewingPrevious: false
   },
 
   // ===== 連チャンモード =====
   chain: {
     questions: [],
     index: 0,
+
     correctStreak: 0,
-    finished: false,
-    viewingPrevious: false
+    lastStreak: 0,
+    maxStreak: 0,
+
+    answered: null,
+
+    showFeedback: false,
+    milestone: null,
+    newRecord: false,
+
+    mode: "normal"
   },
 
-  
-  // ===== 永続データ =====
-  progress: {
-    // tense: { correct: 5, total: 5, star: true }
-  },
+  // ===== 学習データ =====
+  progress: {},
 
-   stars: JSON.parse(localStorage.getItem("stars") || "{}"),
+  stars: JSON.parse(
+    localStorage.getItem("stars") || "{}"
+  ),
 
   studyResults: {},
 
-    weakQuestions: JSON.parse(localStorage.getItem("weakQuestions")) || {},
+  // ===== 弱点問題 =====
+  weakQuestions: JSON.parse(
+    localStorage.getItem("weakQuestions") || "{}"
+  ),
 
-  maxChain: 0
+  // ===== 連チャン記録 =====
+  records: JSON.parse(
+    localStorage.getItem("records")
+  ) || {
+    normalChain:0,
+    basicChain:0,
+    weakChain:0
+  }
 
- 
 };
 
-let weakQuestions = JSON.parse(localStorage.getItem("weakQuestions") || "[]");
-
-
-// ★ ここ追加
-state.maxChain = Number(localStorage.getItem("maxChain") || 0);
 
 function playSound(type) {
   const sounds = {
@@ -1302,42 +1312,62 @@ function startStudy(categoryKey) {
   render();
 }
 
+function startChain(mode){
+
+  let questions = [];
+
+  if(mode==="basic"){
+
+    questions = getAllQuestions().slice(0,69);
+
+  }else if(mode==="weak"){
+
+    questions =
+      Object.values(state.weakQuestions)
+      .map(w=>w.data);
+
+  }else{
+
+    questions = getAllQuestions();
+  }
+
+  if(questions.length===0){
+    alert("問題がありません");
+    return;
+  }
+
+  state.chain = {
+    questions: shuffleArray(questions),
+    index:0,
+
+    correctStreak:0,
+    lastStreak:0,
+    maxStreak:0,
+
+    answered:null,
+
+    showFeedback:false,
+    milestone:null,
+    newRecord:false,
+
+    startMaxRecord: getChainRecord(mode), // ★追加
+
+    mode:mode
+  };
+
+  state.screen="chainQuestion";
+  render();
+}
+
+
+
+
 function goChainMenu() {
   state.screen = "chainMenu";
   render();
 }
 
-function startChainMode() {
 
-  
-  let allQuestions = [];
-
-  Object.values(categories).forEach(cat => {
-    if (cat.questions && Array.isArray(cat.questions)) {
-      allQuestions = allQuestions.concat(cat.questions);
-    }
-  });
-
-  state.chain.questions = shuffleArray(allQuestions);
-  state.chain.showFeedback = false;
-
-  state.chain.index = 0;
-  state.chain.correctStreak = 0;
-  state.chain.maxStreak = 0;
-  state.chain.finished = false;
-  state.chain.answered = false;
-
-  state.chain.milestone = null;
-
-
-  state.chain.startMaxChain = state.maxChain;
-state.chain.newRecord = false;
-
-state.chain.isWeak = false   // ★追加
-
-  state.screen = "chainQuestion";
-  render();
-}
 
 
 
@@ -1354,36 +1384,7 @@ function goWeakChainMenu() {
   render();
 }
 
-function startWeakChainMode() {
 
-  const weakQuestions = getWeakQuestions();
-
-  console.log("weakQuestions:", weakQuestions);
-
-  if (!weakQuestions || weakQuestions.length === 0) {
-    alert("弱点問題はありません 👍 学習モードで問題を解きましょう");
-    return;
-  }
-
-  const chain = state.chain;
-
-  chain.questions = shuffleArray(weakQuestions);
-  chain.index = 0;
-  chain.correctStreak = 0;
-  chain.maxStreak = 0;
-  chain.finished = false;
-  chain.answered = false;
-
-  chain.milestone = null;
-  chain.newRecord = false;
-
-  chain.startMaxChain = state.maxChain;
-  chain.isWeak = true;   // 弱点連チャンモード
-
-  state.screen = "chainQuestion";
-
-  render();
-}
 
 
 /*********************************************************
@@ -1392,88 +1393,93 @@ function startWeakChainMode() {
  *********************************************************/
 
 function renderModeSelect(root) {
+
+  
   const totalStars = getTotalStars();
-  const maxChain = state.maxChain;
-  const weakCount = Object.keys(state.weakQuestions || {}).length;
-
-  console.log("stars at mode select:", state.stars);
-
-  console.log("stars state:", state.stars);
-  console.log("totalStars:", totalStars);
+  
+  const weakCount = getWeakQuestions().length;
 
   root.innerHTML = `
 
-
-  <div class="mode-hero">
+    <div class="mode-hero">
       <img src="images/4cats.png" class="mode-cat">
     </div>
 
-    <h1 class="logo">よんたくん
-    <span>-連チャン中学英文法-</span></h1>
+    <h1 class="logo">
+      よんたくん
+      <span>-連チャン中学英文法-</span>
+    </h1>
 
-     
 
-
+    <!-- 学習モード -->
     <div class="mode-card">
       <button id="studyBtn" class="mode-btn">
         📘 じっくり学習モード
-       <div>
-         ${totalStars > 0 ? `<span class="star-count">⭐ ${totalStars}</span>` : ""}
+        <div class="mode-sub">
+          ${totalStars > 0 ? `⭐ ${totalStars}` : ""}
         </div>
       </button>
     </div>
 
 
+    <!-- 必修連チャン -->
     <div class="mode-card">
       <button id="basicChainBtn" class="mode-btn">
         📘 必修連チャンモード
         <div class="mode-sub">
-          最高 ${maxChain} 連チャン
+          🏆 最高 ${state.records.basicChain} 連チャン
         </div>
       </button>
-    
+    </div>
 
+
+    <!-- 通常連チャン -->
     <div class="mode-card">
       <button id="chainBtn" class="mode-btn">
         🔥 連チャンモード
         <div class="mode-sub">
-          最高 ${maxChain} 連チャン
+          🏆 最高 ${state.records.normalChain} 連チャン
         </div>
-        
       </button>
+    </div>
 
+
+    <!-- 弱点連チャン -->
     <div class="mode-card">
       <button id="weakChainBtn" class="mode-btn">
         💥 弱点連チャンモード
-         <div class="mode-sub">
-          弱点問題数  ${weakCount}問
-         </div>
-        
+        <div class="mode-sub">
+          弱点問題 ${weakCount} 問
+        </div>    
       </button>
-
-     
-      <p class="version">ver 1.3</p>
     </div>
+
+
+    <p class="version">ver 1.4</p>
+
   `;
 
-  document.getElementById("studyBtn").onclick = goStudyMenu;
+  // ===== ボタンイベント =====
+
+  document.getElementById("studyBtn").onclick = () => {
+    state.screen = "studyMenu";
+    render();
+  };
 
   document.getElementById("basicChainBtn").onclick = () => {
-  state.screen = "basicChainMenu";
-  render();
-};
+    state.screen = "basicChainMenu";
+    render();
+  };
 
-  document.getElementById("chainBtn").onclick = goChainMenu;
+  document.getElementById("chainBtn").onclick = () => {
+    state.screen = "chainMenu";
+    render();
+  };
+
   document.getElementById("weakChainBtn").onclick = () => {
-  state.screen = "weakChainMenu";
-  render();
-};
-
-  const resetBtn = document.getElementById("resetChain");
-
-let pressTimer = null;
-
-
+    state.screen = "weakChainMenu";
+    render();
+  };
 
 }
 
@@ -1837,9 +1843,59 @@ function renderStudyResult(root) {
   document.getElementById("modeBtn").onclick = goModeSelect;
 }
 
+function getModeTitle(mode){
+
+  if(mode === "basic") return "📘 必修連チャンモード";
+  if(mode === "weak") return "💥 弱点連チャンモード";
+
+  return "🔥 連チャンモード";
+}
+
+function getChainRecord(mode){
+
+  if(mode === "basic") return state.records.basicChain;
+  if(mode === "weak") return state.records.weakChain;
+
+  return state.records.normalChain;
+}
+
+function updateChainRecord(mode,streak){
+
+  if(mode==="basic"){
+
+    if(streak>state.records.basicChain)
+      state.records.basicChain=streak;
+
+  }else if(mode==="weak"){
+
+    if(streak>state.records.weakChain)
+      state.records.weakChain=streak;
+
+  }else{
+
+    if(streak>state.records.normalChain)
+      state.records.normalChain=streak;
+
+  }
+
+  localStorage.setItem(
+    "records",
+    JSON.stringify(state.records)
+  );
+}
+
+
+
 function renderChainMenu(root) {
 
   const chain = state.chain;  // ← これを追加
+
+  const record =
+  chain.mode === "basic"
+    ? state.records.basicChain
+    : chain.mode === "weak"
+    ? state.records.weakChain
+    : state.records.normalChain;
 
   root.innerHTML = `
 
@@ -1851,9 +1907,9 @@ function renderChainMenu(root) {
       <img src="images/cm01.png" class="mode-cat">
     </div>
 
-    <p align=center>🏆 BEST：${state.maxChain}連チャン！</p>
+    <p align=center>🏆最高記録：${record}連チャン！</p>
 
-    <div class="reset-link" id="resetChain">
+    <div class="reset-link" id="resetChainBtn">
     ⚠ 長押しで記録リセット
   </div>
 
@@ -1865,7 +1921,8 @@ function renderChainMenu(root) {
     </div>
   `;
 
-  document.getElementById("startBtn").onclick = startChainMode;
+  document.getElementById("startBtn").onclick =
+  () => startChain("normal");
   document.getElementById("backBtn").onclick = goModeSelect;
 
   setupChainReset(); // ← 後で作る
@@ -1873,19 +1930,28 @@ function renderChainMenu(root) {
 
 function setupChainReset() {
 
-  const resetBtn = document.getElementById("resetChain");
-  let pressTimer = null;
+  const resetBtn = document.getElementById("resetChainBtn");
+  if (!resetBtn) return;
+
+  let pressTimer;
 
   const startPress = () => {
+
     pressTimer = setTimeout(() => {
 
-      if (!confirm("🔥 最高記録をリセットしますか？")) return;
+      if (!confirm("連チャン記録をリセットしますか？")) return;
 
-      state.maxChain = 0;
-      localStorage.setItem("maxChain", 0);
+      state.records.normalChain = 0;
+
+      localStorage.setItem(
+        "records",
+        JSON.stringify(state.records)
+      );
+
       render();
 
-    }, 800);
+    }, 800); // 長押し時間
+
   };
 
   const cancelPress = () => clearTimeout(pressTimer);
@@ -1900,292 +1966,450 @@ function setupChainReset() {
 }
 
 
-function renderChainQuestion(root) {
+function renderChainQuestion(root){
 
   const chain = state.chain;
   const q = chain.questions[chain.index];
 
-   if (!q) {
-    console.error("問題が取得できません", chain);
-    root.innerHTML = "<p>問題が読み込めませんでした</p>";
-    return;
-  }
+  const current = chain.index + 1;
+  const total = chain.questions.length;
 
-  const answered = chain.answered;
+  const progress = (current / total) * 100;
 
-  root.innerHTML = `
-   <h2>
-${chain.isWeak
-  ? "💥 弱点連チャンモード"
-  : chain.isBasic
-  ? "📘 基本問題連チャンモード"
-  : "🔥 連チャンモード"}
-</h2>
-
-    <div class="question-area">
-      <div class="question">${q.sentence}</div> 
-      
-      <div class="choices">
-        ${q.choices.map((c, i) =>
-          `<button class="choice" data-index="${i}">${c}</button>`
-        ).join("")}
-      </div>
-
-        ${chain.showFeedback ? `
-       <div class="feedback-correct">✅ 正解！</div>
-     ` : ""}
-
- ${answered && !answered.isCorrect ? `
-  <div class="result-area">
-    <p class="wrong-text">不正解</p>
-  <div id="explanation" class="chain-explanation">
-    <p>${q.explanation || ""}</p>
-  </div>
-` : ""}
-      <div align=right>🔥 連続正解: ${chain.answered && !chain.answered.isCorrect
-    ? chain.lastStreak
-    : chain.correctStreak}</div>
-      <div align=right>🏆 最高記録: ${state.maxChain}</div>
-    </div>
-      
-    <div class="bottom-nav chain-nav">
-      <button id="menuBtn">記録確定せず<br>モード選択へ</button>
-      <button id="endBtn">記録確定して終了</button>
-    </div>
-
-    ${chain.milestone ? `
-    <div class="milestone-popup">
-      🎉 ${chain.milestone} 連チャン！
-    </div>
-  ` : ""}
-
-  ${chain.newRecord ? `
-    <div class="record-popup">
-      🔥 新記録更新！
-    </div>` : ""}
-  `;
-
-  // ===== 選択 =====
-  document.querySelectorAll(".choice").forEach(btn => {
-    btn.onclick = () => {
-      if (chain.answered) return;
-
-      const selected = Number(btn.dataset.index);
-      const isCorrect = selected === q.correct;
-
-      
-
-      if (isCorrect) {
-
-  chain.answered = { selected, isCorrect: true };
-  chain.correctStreak++;
-
-  // ★追加（弱点克服）
-  if (chain.isWeak) {
-    successWeakQuestion(q);
-  }
-
-  chain.maxStreak = Math.max(chain.maxStreak, chain.correctStreak);
-
-  const isNewRecord = (chain.correctStreak === chain.startMaxChain + 1);
-  const isMilestone = (chain.correctStreak % 10 === 0);
-
-  // ===== ① 正解 =====
-  chain.showFeedback = true;
-  playSound("correct");
-  render();
-
-  setTimeout(() => {
-
-    chain.showFeedback = false;
-
-    // ===== ② 新記録 =====
-    if (isNewRecord) {
-      chain.newRecord = true;
-      playSound("record");
-      render();
-    }
-
-    setTimeout(() => {
-
-      chain.newRecord = false;
-
-      // ===== ③ 10連 =====
-      if (isMilestone) {
-        chain.milestone = chain.correctStreak;
-        playSound("record");
-        render();
-      }
-
-      setTimeout(() => {
-
-        chain.milestone = null;
-        goNext();
-
-      }, 900);
-
-    }, isNewRecord ? 600 : 0);
-
-  }, 400);
-} else {
-
-  chain.lastStreak = chain.correctStreak;  // ← 追加
-
-  chain.answered = { selected, isCorrect: false };
-
-  playSound("wrong");
-
-  chain.correctStreak = 0;
-
-   addWeakQuestion(q);
-
-  render();
-}
-    };
-  });
-  // ===== メニュー =====
-  document.getElementById("menuBtn").onclick = () => {
-  if (!confirm("連チャンを中断しますか？")) return;
-  goModeSelect();
-};
-
-// ===== 終了 =====
-document.getElementById("endBtn").onclick = () => {
-  finishChain();
-};
-
-}
-
-function goNext() {
-
-   const chain = state.chain;  // ← これ必須
-
-  chain.index++;
-
-  if (chain.index >= chain.questions.length) {
+  if(!q){
     finishChain();
     return;
   }
 
-  chain.answered = false;
+  const modeTitle =
+    chain.mode === "basic"
+      ? "📘 必修連チャンモード"
+      : chain.mode === "weak"
+      ? "💥 弱点連チャンモード"
+      : "🔥 連チャンモード";
+
+  const record =
+    chain.mode === "basic"
+      ? state.records.basicChain
+      : chain.mode === "weak"
+      ? state.records.weakChain
+      : state.records.normalChain;
+
+  root.innerHTML = `
+
+  <h2>${modeTitle}</h2>
+
+  <div>
+      🏆 最高記録：${record}
+    </div>
+
+  <div class="chain-status">
+  🔥 ${chain.correctStreak}連チャン
+  <span>${current}/${total}</span>
+</div>
+
+ <div class="progress-bar">
+    <div class="progress-fill"
+         style="width:${progress}%">
+    </div>
+  </div>
+
+  <div class="question-area">
+
+    <div class="question">
+      ${q.sentence}
+    </div>
+
+    <div class="choices">
+      ${q.choices.map((c,i)=>
+        `<button class="choice" data-index="${i}">
+          ${c}
+        </button>`
+      ).join("")}
+    </div>
+
+    ${chain.showFeedback
+      ? `<div class="feedback-correct">✅ 正解！</div>`
+      : ""
+    }
+
+    ${chain.answered && !chain.answered.isCorrect
+      ? `<p class="wrong-text">不正解</p>
+         <div class="chain-explanation">
+           ${q.explanation || ""}
+         </div>`
+      : ""
+    }
+
+    
+
+  </div>
+
+  <div class="bottom-nav">
+    <button id="menuBtn" class="mode-btn">
+      記録確定せず<br>モード選択へ
+    </button>
+
+    <button id="endBtn" class="mode-btn">
+      記録確定して終了
+    </button>
+  </div>
+
+  ${chain.milestone
+    ? `<div class="milestone-popup">
+        🎉 ${chain.milestone} 連チャン！
+       </div>`
+    : ""
+  }
+
+  ${chain.newRecord
+    ? `<div class="record-popup">
+        🔥 新記録更新！
+       </div>`
+    : ""
+  }
+  `;
+
+  const buttons = document.querySelectorAll(".choice");
+
+  buttons.forEach(btn=>{
+
+    btn.onclick = ()=>{
+
+      if(chain.answered) return;
+
+      const selected =
+        Number(btn.dataset.index);
+
+      const correct =
+  Number(q.correct);
+
+
+
+buttons.forEach((b,i)=>{
+
+  if(i === correct){
+    b.classList.add("correct");
+  }
+
+  if(i === selected && selected !== correct){
+    b.classList.add("wrong");
+  }
+
+});
+
+      const isCorrect =
+        selected === Number(q.correct);
+
+      if(isCorrect){
+
+        btn.classList.add("correct");
+        
+
+        chain.answered = {selected,isCorrect:true};
+
+        chain.correctStreak++;
+
+        if(chain.mode==="weak"){
+          successWeakQuestion(q);
+        }
+
+        chain.maxStreak =
+          Math.max(chain.maxStreak,
+                   chain.correctStreak);
+
+        const isNewRecord =
+  chain.correctStreak >
+  chain.startMaxRecord &&
+  chain.correctStreak === chain.startMaxRecord + 1;
+
+        const isMilestone =
+          chain.correctStreak % 10 === 0;
+
+        chain.showFeedback = true;
+
+        playSound("correct");
+
+        
+
+        setTimeout(()=>{
+
+          chain.showFeedback = false;
+
+          if(isNewRecord){
+            chain.newRecord = true;
+            playSound("record");
+            render();
+          }
+
+          setTimeout(()=>{
+
+            chain.newRecord = false;
+
+            if(isMilestone){
+              chain.milestone =
+                chain.correctStreak;
+                playSound("record");
+              render();
+            }
+
+            setTimeout(()=>{
+              chain.milestone = null;
+              goNext();
+
+            render();
+
+            },400);
+
+          },400);
+
+        },200);
+
+      }else{
+
+        btn.classList.add("wrong");
+
+        chain.lastStreak =
+          chain.correctStreak;
+
+        chain.answered = {selected,isCorrect:false};
+
+        playSound("wrong");
+
+        chain.correctStreak = 0;
+
+        addWeakQuestion(q);
+
+        render();
+      } 
+
+    }; 
+
+  });
+
+  // 既に回答済みなら色を復元
+if(chain.answered){
+
+  const selected = chain.answered.selected;
+  const correct = Number(q.correct);
+
+  buttons.forEach((b,i)=>{
+
+    if(i === correct){
+      b.classList.add("correct");
+    }
+
+    if(i === selected && selected !== correct){
+      b.classList.add("wrong");
+    }
+
+  });
+
+}
+
+  document.getElementById("menuBtn").onclick = ()=>{
+    if(!confirm("連チャンを中断しますか？"))
+      return;
+
+    goModeSelect();
+  };
+
+  document.getElementById("endBtn").onclick = ()=>{
+    finishChain();
+  };
+
+}
+
+function goNext(){
+
+  const chain = state.chain;
+
+  chain.index++;
+  chain.answered=null;
+
   render();
 }
 
-function finishChain() {
+function finishChain(){
+
   const chain = state.chain;
+
+  let recordKey = "normalChain";
+
+  if(chain.mode === "basic")
+    recordKey = "basicChain";
+
+  if(chain.mode === "weak")
+    recordKey = "weakChain";
 
   let isNewRecord = false;
 
-  if (chain.maxStreak > state.maxChain) {
-    state.maxChain = chain.maxStreak;
-    localStorage.setItem("maxChain", state.maxChain);
+  if(chain.maxStreak >
+     state.records[recordKey]){
+
+    state.records[recordKey] =
+      chain.maxStreak;
+
     isNewRecord = true;
   }
-  
-  if (isNewRecord) {
-  playSound("record");
-  }
 
-  // 🔥 プレイ終了時に最高記録更新
-  if (chain.maxStreak > state.maxChain) {
-    state.maxChain = chain.maxStreak;
-    localStorage.setItem("maxChain", state.maxChain);
-  }
+  localStorage.setItem(
+    "records",
+    JSON.stringify(state.records)
+  );
 
-  state.chain.isNewRecord = isNewRecord;
+  chain.newRecord = isNewRecord;
 
   state.screen = "chainResult";
+
   render();
 }
 
-function renderChainResult(root) {
+function renderChainResult(root){
+
   const chain = state.chain;
 
+  const modeTitle =
+    chain.mode === "basic"
+      ? "📘 必修連チャン結果"
+      : chain.mode === "weak"
+      ? "💥 弱点連チャン結果"
+      : "🔥 連チャン結果";
+
   root.innerHTML = `
-    
-     <h2>
-     ${chain.isWeak
-     ? "💥 弱点連チャン結果"
-     : chain.isBasic
-     ? "📘 基本連チャン結果"
-     : "🔥 連チャン結果"}
-     </h2>
 
-    <div class="cat-jump">
-      <img src="images/cw02.png" class="mode-cat">
+    <h2>${modeTitle}</h2>
+
+     <div class="mode-study">
+      <img src="images/cm01.png" class="mode-cat">
     </div>
 
-    <div class="chain-score">
-      ${chain.maxStreak} 連チャン
+    <div class="result-score">
+
+      <p class="score">
+        ${chain.maxStreak} 連チャン！
+      </p>
+
+      ${chain.newRecord
+        ? `<p class="new-record">
+            🎉 NEW RECORD！
+           </p>`
+        : ""
+      }
+
     </div>
 
-    ${chain.isNewRecord ? `
-    <div class="new-record">
-      🔥 NEW RECORD！🎉
-    </div>
-    ` : ""}
+    <button id="retryBtn">
+      🔁 もう一度
+    </button>
 
-    <div class="chain-best">
-      最高記録：${state.maxChain}
+    <div class="bottom-nav">
+      <button id="backBtn"
+      class="mode-btn">
+        ◀モード選択へ
+      </button>
     </div>
 
-    <button id="chainBtn">メニューへ</button>
-    <button id="modeBtn">モード選択へ</button>
   `;
 
-  document.getElementById("chainBtn").onclick = () => {
-
-    if (state.chain.isWeak) {
-      state.screen = "weakChainMenu";
-    } else {
-      state.screen = "chainMenu";
-    }
-
-    render();
+  document.getElementById("retryBtn")
+  .onclick = () => {
+    startChain(chain.mode);
   };
 
-  document.getElementById("modeBtn").onclick = goModeSelect;
+  document.getElementById("backBtn")
+  .onclick = goModeSelect;
+
 }
 
 
 
 function renderWeakChainMenu(root) {
 
-  const weakCount = getWeakQuestions().length;
+  const weakList = Object.values(state.weakQuestions || {});
+  const weakCount = weakList.length;
 
   root.innerHTML = `
 
-    <h2>💥 弱点連チャンモード</h2>
+  <h2>💥 弱点連チャンモード</h2>
 
-     <div class="mode-study">
+   <div class="mode-study">
       <img src="images/cs01.png" class="mode-cat">
     </div>
 
-    <p>弱点問題：${weakCount}問</p>
+   <div align=center>弱点問題：${weakCount}問</div>
 
-    <button id="startWeakChain">スタート</button>
+  <div align=center>克服しよう！</div>
 
+  <button id="startWeakChainBtn">
+    💥 弱点連チャンSTART
+  </button>
 
-     <div class="note">弱点問題：じっくり学習モード、連チャンモードで間違えた問題が出題されます。2回正解すると出題されなくなります。</div>
+  <div class="weak-list">
+    ${
+      weakCount === 0
+        ? `<p class="weak-empty">弱点問題はありません 🎉</p>`
+        : weakList.map((w, i) => {
 
-    <div class="bottom-nav">
-    <button id="backMode" class="mode-btn">モード選択へ</button>
-    </div>
+            const remain = 2 - w.success;
+
+            return `
+            <div class="weak-item" data-index="${i}">
+              <div class="weak-sentence">
+                ${w.data.sentence}
+              </div>
+              <div class="weak-info" align=right>
+                克服まであと ${remain} 回
+              </div>
+            </div>
+            `;
+          }).join("")
+    }
+  </div>
+
+  <div class="bottom-nav">
+    <button id="backBtn" class="mode-btn">◀ モード選択へ</button>
+  </div>
 
   `;
 
-  document
-    .getElementById("startWeakChain")
-    .onclick = startWeakChainMode;
+  // ===== 弱点連チャンスタート =====
 
-  document
-    .getElementById("backMode")
-    .onclick = () => {
+  document.getElementById("startWeakChainBtn").onclick =
+  () => startChain("weak");
 
-      state.screen = "modeSelect";
+  // ===== 戻る =====
+
+  document.getElementById("backBtn").onclick = goModeSelect;
+
+  // ===== 個別問題クリック =====
+
+  document.querySelectorAll(".weak-item").forEach((item, i) => {
+
+    item.onclick = () => {
+
+      const q = weakList[i].data;
+
+      state.chain = {
+        questions: [q],
+        index: 0,
+        correctStreak: 0,
+        maxStreak: 0,
+        answered: null,
+        showFeedback: false,
+        milestone: null,
+        newRecord: false,
+        isWeak: true
+      };
+
+      state.screen = "chainQuestion";
+
       render();
+      window.scrollTo(0,0);
 
     };
+
+  });
 
 }
 
@@ -2215,72 +2439,112 @@ function renderBasicChainMenu(root) {
 
   root.innerHTML = `
 
-   <h2>📘 基本連チャンモード</h2>
+   <h2>📘 必修連チャンモード</h2>
 
-  
     <div class="mode-study">
       <img src="images/cb01.png" class="mode-cat">
     </div>
 
-    <p class="mode-desc">
-      基本問題だけで連チャンに挑戦！
+    <p class="mode-desc" align=center>
+      必修問題だけで連チャンに挑戦
     </p>
-  
+
+    <p align=center>🏆最高記録：${state.records.basicChain}連チャン！</p>
+
+    <div id="resetBasicChainBtn" class="reset-link">
+      ⚠ 長押しで記録リセット
+    </div>
 
     <button id="startBasicChainBtn">
-      基本連チャンスタート
+      📘 必修連チャンSTART
     </button>
 
-
-     <div class="bottom-nav">
-    <button id="backBtn" class="mode-btn">◀モード選択へ</button>
+    <div class="bottom-nav">
+      <button id="backBtn" class="mode-btn">◀モード選択へ</button>
     </div>
   `;
 
-  document.getElementById("startBasicChainBtn").onclick = startBasicChainMode;
+  document.getElementById("startBasicChainBtn").onclick =
+  () => startChain("basic");
   document.getElementById("backBtn").onclick = goModeSelect;
+
+  const resetBtn = document.getElementById("resetBasicChainBtn");
+  if (!resetBtn) return;
+
+  let pressTimer;
+
+  const startPress = () => {
+
+    pressTimer = setTimeout(() => {
+
+      if (!confirm("必修連チャン記録をリセットしますか？")) return;
+
+      state.records.basicChain = 0;
+
+      localStorage.setItem(
+        "records",
+        JSON.stringify(state.records)
+      );
+
+      render();
+
+    }, 800); // 長押し時間
 
   
 
-  setupChainReset(); // ← 後で作る
+  const cancelPress = () => clearTimeout(pressTimer);
+
+  resetBtn.addEventListener("mousedown", startPress);
+  resetBtn.addEventListener("mouseup", cancelPress);
+  resetBtn.addEventListener("mouseleave", cancelPress);
+
+  resetBtn.addEventListener("touchstart", startPress);
+  resetBtn.addEventListener("touchend", cancelPress);
+  resetBtn.addEventListener("touchmove", cancelPress);
+
+
+    render();
+  };
+setupBasicChainReset();
 }
 
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
-}
+function setupBasicChainReset() {
 
-function startBasicChainMode() {
+  const resetBtn = document.getElementById("resetBasicChainBtn");
+  if (!resetBtn) return;
 
-  console.log("基本連チャン開始");
+  let pressTimer;
 
-  const allQuestions = getAllQuestions();
-  const basicQuestions = allQuestions.slice(0, 69);
+  const startPress = () => {
 
-  console.log("basicQuestions:", basicQuestions.length);
+    pressTimer = setTimeout(() => {
 
-  if (basicQuestions.length === 0) {
-    alert("基本問題がありません");
-    return;
-  }
+      if (!confirm("必修連チャン記録をリセットしますか？")) return;
 
-  state.chain = {
-    questions: shuffle([...basicQuestions]),
-    correctStreak: 0,   // ★これが必要
-    lastStreak: 0,      // ★これも安全のため
-    startMaxChain: state.maxChain,  // ★これを追加
-    index: 0,
-    streak: 0,
-    maxStreak: 0,
-    isBasic: true,
-    isWeak: false
+      state.records.basicChain = 0;
+
+      localStorage.setItem(
+        "records",
+        JSON.stringify(state.records)
+      );
+
+      render();
+
+    }, 800); // 長押し時間
+
   };
 
-  console.log("chain state:", state.chain);
+  const cancelPress = () => clearTimeout(pressTimer);
 
-  state.screen = "chainQuestion";
+  resetBtn.addEventListener("mousedown", startPress);
+  resetBtn.addEventListener("mouseup", cancelPress);
+  resetBtn.addEventListener("mouseleave", cancelPress);
 
-  render();
+  resetBtn.addEventListener("touchstart", startPress);
+  resetBtn.addEventListener("touchend", cancelPress);
+  resetBtn.addEventListener("touchmove", cancelPress);
 }
+
 
 function getAllQuestions() {
 
@@ -2342,7 +2606,6 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("SW registered"))
     .catch(err => console.error("SW failed", err));
 }
-
 
 
 
