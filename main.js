@@ -1160,7 +1160,7 @@ function load() {
 }
 
 
-const MAX_STARS = 13; // 単元数が追加されたら増やす
+const MAX_STARS = 14; // 単元数が追加されたら増やす
 
 
 
