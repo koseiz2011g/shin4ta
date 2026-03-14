@@ -1451,7 +1451,7 @@ function renderModeSelect(root) {
     <div class="mode-card">
       <button id="studyBtn" class="mode-btn">
         📘 じっくり学習モード
-        <div class="mode-sub">
+        <div class="mode-sub02">
        ${starIcons}
        <div class="star-count">
        ${totalStars} / ${MAX_STARS}
@@ -1512,7 +1512,7 @@ function renderModeSelect(root) {
     </div>
 
 
-    <p class="version">ver 1.6</p>
+    <p class="version">ver 1.7</p>
 
   `;
 
@@ -1970,7 +1970,7 @@ function renderChainMenu(root) {
     ⚠ 長押しで記録リセット
   </div>
 
-    <button id="startBtn">🔥 GAME START</button>
+    <button class="start-btn" id="startBtn">🔥 GAME START</button>
    
 
      <div class="bottom-nav">
@@ -2111,6 +2111,7 @@ function renderChainQuestion(root){
       記録確定して終了
     </button>
   </div>
+
 
   ${chain.milestone
     ? `<div class="milestone-popup">
@@ -2323,6 +2324,8 @@ function finishChain(){
       chain.maxStreak;
 
     isNewRecord = true;
+  
+  playSound("record");
   }
 
   localStorage.setItem(
@@ -2331,6 +2334,7 @@ function finishChain(){
   );
 
   chain.newRecord = isNewRecord;
+
 
   state.screen = "chainResult";
 
@@ -2356,9 +2360,9 @@ function renderChainResult(root){
       <img src="images/cm01.png" class="mode-cat">
     </div>
 
-    <div class="result-score">
+   
 
-      <p class="score">
+      <p class="chain-score">
         ${chain.maxStreak} 連チャン！
       </p>
 
@@ -2369,9 +2373,9 @@ function renderChainResult(root){
         : ""
       }
 
-    </div>
+    
 
-    <button id="retryBtn">
+    <button class="mode-btn" id="retryBtn">
       🔁 もう一度
     </button>
 
@@ -2383,6 +2387,9 @@ function renderChainResult(root){
     </div>
 
   `;
+
+ 
+
 
   document.getElementById("retryBtn")
   .onclick = () => {
@@ -2413,7 +2420,7 @@ function renderWeakChainMenu(root) {
 
   <div align=center>克服しよう！</div>
 
-  <button id="startWeakChainBtn">
+  <button class="start-btn" id="startWeakChainBtn">
     💥 弱点連チャンSTART
   </button>
 
@@ -2528,7 +2535,7 @@ function renderBasicChainMenu(root) {
       ⚠ 長押しで記録リセット
     </div>
 
-    <button id="startBasicChainBtn">
+    <button class="start-btn" id="startBasicChainBtn">
       📘 必修連チャンSTART
     </button>
 
@@ -2706,7 +2713,3 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("SW registered"))
     .catch(err => console.error("SW failed", err));
 }
-
-
-
-
