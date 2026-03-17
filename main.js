@@ -2,76 +2,78 @@
    データ
 ===================== */
 const categories = {
+
 tense: {
     title: "📘 【必修】時制",
     questions: [
  {
   sentence: "She <span class='highlight'>plays tennis</span> every day.",
-  choices: ["テニスをしていた", "テニスをする", "テニスをする予定だ", "テニスをした"],
+  choices: ["テニスをしていた", "テニスをします", "テニスをする予定だ", "テニスをした"],
   correct: 1,
-  explanation: "▶「plays」 は現在形で、習慣的に行われる動作を表します。▶ 彼女は/テニスをします/毎日",
+  explanation: "▶ 彼女は／テニスをします／毎日<br>▶「plays」 は現在形で、習慣的に行われる動作を表します。",
   youtube: "https://www.youtube.com/embed/=XXXX"
 },
 {
 sentence: "I <span class='highlight'>have been</span> to Canada twice. ",
   choices: ["行ったことがある", "行った", "行く予定だ", "行っている"],
   correct: 0,
-  explanation: "▶「have been to Canada」は現在完了形で、経験を表しています。「twice」は2度という意味です。▶ 私は/行ったことがある/カナダへ/2度"
+  explanation: "▶ 私は／行ったことがある／カナダへ／2度<br>▶「have been to Canada」は現在完了形で、経験を表しています。「twice」は2度という意味です。"
 },
 {
   sentence: "She <span class='highlight'>played tennis</span> yesterday.",
   choices: ["テニスをする", "テニスをしている", "テニスをした", "テニスをする予定だ"],
   correct: 2,
-  explanation: "▶「played」 は過去形で、過去の出来事を表します。▶ 彼女は/テニスをしました/昨日"
+  explanation: "▶ 彼女は／テニスをしました／昨日<br>▶「played」 は過去形で、過去の出来事を表します。"
 },
 {
   sentence: "She <span class='highlight'>is playing tennis</span> now.",
   choices: ["テニスをした", "テニスをしている", "テニスをする", "テニスをする予定だ"],
   correct: 1,
-  explanation: "▶「is playing」は現在進行形で、今、行われている動作の継続を表します。▶ 彼女は/テニスをしています/今"
+  explanation: "▶ 彼女は／テニスをしています／今<br>▶「is playing」は現在進行形で、今、行われている動作の継続を表します。"
 },
 {
   sentence: "She <span class='highlight'>was playing tennis</span> then.",
   choices: ["テニスをしている", "テニスをした", "テニスをしていた", "テニスをする予定だ"],
   correct: 2,
-  explanation: "▶「was playing」は過去進行形で、過去のある時点での動作の継続を表します。▶ 彼女は/テニスをしていました/そのとき"
+  explanation: "▶ 彼女は／テニスをしていました／そのとき<br>▶「was playing」は過去進行形で、過去のある時点での動作の継続を表します。"
 },
 {
 sentence: "I <span class='highlight'>have</span> already <span class='highlight'>done</span> my homework ",
   choices: ["やるつもり", "やっている", "やる予定だ", "やってしまった"],
   correct: 3,
-  explanation: "▶ 私は/すでにやってしまった/私の宿題を。▶「have done」は現在完了形で、完了を表しています。「done」は「do」の過去分詞です。"
+  explanation: "▶ 私は／すでにやってしまった／私の宿題を。<br>▶「have done」は現在完了形で、完了を表しています。「done」は「do」の過去分詞です。"
 },
 {
   sentence: "I <span class='highlight'>will play tennis</span> tomorrow.",
   choices: ["テニスをした", "テニスをしている", "テニスをするつもりだ", "テニスをしていた"],
   correct: 2,
-  explanation: "▶「will play」は未来を表し、「～するつもりだ」「～するだろう」という意味になります。▶ 私は/テニスをするつもりです/明日"
+  explanation: "▶ 私は／テニスをするつもりです／明日<br>▶「will play」は未来を表し、「～するつもりだ」「～するだろう」という意味になります。"
 },
 {
   sentence: "We <span class='highlight'>have been</span> friends since we were children.",
   choices: ["ずっと友達だ", "友達だった", "友達になる予定だ", "友達になりつつある"],
   correct: 0,
-  explanation: "▶「has played」は現在完了形で、過去から現在まで続いている状態や経験を表します。▶ 私達は/ずっと友達だ/子供のころから"
+  explanation: "▶ 私達は／ずっと友達だ／子供のころから<br>▶「has played」は現在完了形で、過去から現在まで続いている状態や経験を表します。"
 },
 {
   sentence: "She <span class='highlight'>is going to play tennis</span> next week.",
   choices: ["テニスをした", "テニスをする予定だ", "テニスをしている", "テニスをしていた"],
   correct: 1,
-  explanation: "▶「is going to play」 は、be going to 動詞の原形の形で、すでに決まっている未来の予定を表します。▶ 彼女は/テニスをする予定です/来週"
+  explanation: "▶ 彼女は／テニスをする予定です／来週<br>▶「is going to play」 は、be going to 動詞の原形の形で、すでに決まっている未来の予定を表します。"
 },
 {
   sentence: "She <span class='highlight'>has played tennis</span> for ten years.",
   choices: ["テニスをした", "テニスをしていた", "テニスをしている", "テニスをする予定だ"],
   correct: 2,
-  explanation: "▶「has played」は現在完了形で、過去から現在まで続いている状態や経験を表します。▶ 彼女は/ずっとテニスをしている/10年間"
+  explanation: "▶ 彼女は／ずっとテニスをしている／10年間<br>▶「has played」は現在完了形で、過去から現在まで続いている状態や経験を表します。"
 },
 {
   sentence: "They <span class='highlight'>have been playing tennis</span> for two hours.",
   choices: ["テニスをした", "テニスをする", "テニスをずっとし続けている", "テニスをする予定だ"],
   correct: 2,
-  explanation: "▶「have been playing」は現在完了進行形で、動作が過去から現在まで継続していることを表します。▶ 彼らは/ずっとテニスをしています/2時間"
+  explanation: "▶ 彼らは／ずっとテニスをしています／2時間<br>▶「have been playing」は現在完了進行形で、動作が過去から現在まで継続していることを表します。"
 }
+
  ]
   },
 
@@ -502,15 +504,14 @@ modal02: {
   sentence: "<span class='highlight'>Would you like</span> some coffee?",
   choices: ["望んでいますか", "飲まなければなりませんか", "飲めますか", "飲むべきですか"],
   correct: 0,
-  explanation: "▶ 望んでいますか➟いかがですか／コーヒーは<br>▶「Would you like ～?」は勧める表現です。"
+  explanation: "▶ いかがですか／コーヒーは<br>▶「Would you like ～?」は勧める表現です。"
 },
 {
   sentence: "I<span class='highlight'>'d like to ask</span> you some questions.",
   choices: ["聞かなければならない", "聞くことができる", "聞きたい", "聞くべきだ"],
   correct: 2,
-  explanation: "▶ 私は／望んでいる／聞くことを／あなたに／いくつかの質問を<br>▶「I'd like to ～」は「～したい」という丁寧な希望表現です。"
+  explanation: "▶ 私は／聞きたい／あなたに／いくつかの質問を<br>▶「I'd like to ～」は「～したい」という丁寧な希望表現です。"
 }
-
  ]
   },
 
@@ -548,7 +549,7 @@ pre02: {
 
 
 conjunction02: {
-    title: "📗 接続詞02",
+    title: "📗 【必修】接続詞02",
     questions: [
 {
   sentence: "<span class='highlight'>Though</span> he is young, he is very strong.",
@@ -576,7 +577,7 @@ conjunction02: {
 },
 {
   sentence: "She can speak <span class='highlight'>not only</span> English <span class='highlight'>but also</span> French.",
-  choices: ["英語とフランス語のどちらも話せない", "英語とフランス語のどちらか一方は話せる", "英語だけでなくフランス語も話せる", "英語は話せる、フランス語はだめだけど"],
+  choices: ["どちらも～ない", "どちらか一方", "AだけでなくBも", "しかし"],
   correct: 2,
   explanation: "▶ 彼女は／話すことができる／英語だけでなくフランス語も<br>▶「not only A but also B」は「AだけでなくBも」という意味です。"
 },
@@ -622,7 +623,7 @@ conjunction02: {
 
 
 
-pronoun02: {
+ pronoun02: {
     title: "📗 代名詞02",
     questions: [
 {
@@ -717,14 +718,16 @@ pronoun02: {
   explanation: "▶ その赤いかばんは／私たちのものです／彼らのものではありません<br>▶「theirs」 は3人称複数・所有代名詞で、「彼らのもの」という意味で使われています。"
 }
 
+
  ]
   },
 
 
 
- pronoun03: {
+pronoun03: {
     title: "📗 代名詞03",
     questions: [
+
 {
   sentence: "This classroom is <span class='highlight'>ours</span>.",
   choices: ["私たちの", "私たちのもの", "私たちは", "私たちに"],
@@ -899,7 +902,7 @@ infinitive02: {
 },
 {
   sentence: "She enjoys <span class='highlight'>playing</span> tennis.",
-  choices: ["することを", "して", "するために", "するための"],
+  choices: ["することを", "している", "するために", "するための"],
   correct: 0,
   explanation: "▶ 彼女は／楽しみます／テニスをすることを<br>▶「playing tennis」は動名詞で、「enjoys」の目的語になり、「テニスをすることを」という意味になります。「enjoy」の目的語に「不定詞」は使われません。"
 },
@@ -1015,6 +1018,8 @@ clauseparticiple: {
 
 
 
+
+
 }
 
 
@@ -1095,25 +1100,36 @@ const state = {
 };
 
 
-function playSound(type) {
+function playSound(type){
+
   const sounds = {
-    correct: "sounds/correct.mp3",
-    wrong: "sounds/wrong.mp3",
-    finish: "sounds/finish.mp3",
-    next: "sounds/next.mp3",
-    record: "sounds/record.mp3",
-    tryagain: "sounds/tryagain.mp3"
+
+    // 既存
+    correct : "sounds/correct.mp3",
+    wrong   : "sounds/wrong.mp3",
+    select  : "sounds/select.mp3",
+    finish  : "sounds/finish.mp3",
+    next    : "sounds/next.mp3",
+    tryagain: "sounds/tryagain.mp3",
+
+    // 結果画面
+    result    : "sounds/result.mp3",
+    milestone : "sounds/milestone.mp3",
+    record    : "sounds/record.mp3",
+    perfect   : "sounds/perfect.mp3"
+
   };
 
   const src = sounds[type];
-  if (!src) return;
+  if(!src) return;
 
   const audio = new Audio(src);
-  audio.currentTime = 0;
-  audio.play().catch(() => {
-    // 自動再生制限対策（無音でもOK）
-  });
+  audio.volume = 0.8;
+  audio.play();
+
 }
+
+
 
 function getStudyEvaluation(correct, total) {
   const rate = correct / total;
@@ -1887,9 +1903,10 @@ function renderStudyResult(root) {
         : ""
     }
 
-    <button id="reviewBtn">最後の問題を見る</button>
-    <button id="menuBtn">📘 学習メニューへ</button>
-    <button id="modeBtn">モード選択へ</button>
+    <button id="reviewBtn" class="mode-btn">最後の問題を見る</button>
+    <button id="menuBtn" class="mode-btn">📘 学習メニューへ</button>
+    <div class="bottom-nav">
+    <button id="modeBtn" class="mode-btn">モード選択へ</button></div>
   `;
 
   // 効果音
@@ -1970,7 +1987,7 @@ function renderChainMenu(root) {
   
     
     <div class="mode-study">
-      <img src="images/cm01.png" class="mode-cat">
+      <img src="images/cmi01.png" class="mode-cat">
     </div>
 
     <p align=center>🏆最高記録：${record}連チャン！</p>
@@ -2131,7 +2148,7 @@ function renderChainQuestion(root){
 
   ${chain.newRecord
     ? `<div class="record-popup">
-        🔥 新記録更新！
+        🔥 記録更新！
        </div>`
     : ""
   }
@@ -2241,7 +2258,7 @@ buttons.forEach((b,i)=>{
 
             render();
 
-            },400);
+            },600);
 
           },400);
 
@@ -2312,29 +2329,27 @@ function goNext(){
   render();
 }
 
-function finishChain(){
+function finishChain() {
 
   const chain = state.chain;
 
   let recordKey = "normalChain";
 
-  if(chain.mode === "basic")
+  if (chain.mode === "basic") {
     recordKey = "basicChain";
+  }
 
-  if(chain.mode === "weak")
+  if (chain.mode === "weak") {
     recordKey = "weakChain";
+  }
 
   let isNewRecord = false;
+  const oldRecord = state.records[recordKey];
 
-  if(chain.maxStreak >
-     state.records[recordKey]){
-
-    state.records[recordKey] =
-      chain.maxStreak;
-
+  if (chain.maxStreak > oldRecord) {
+    state.records[recordKey] = chain.maxStreak;
     isNewRecord = true;
-  
-  playSound("record");
+    playSound("record");
   }
 
   localStorage.setItem(
@@ -2344,15 +2359,53 @@ function finishChain(){
 
   chain.newRecord = isNewRecord;
 
+  // 今日イチとの差
+  const todayBest = state.today?.maxChain || 0;
+  chain.toTodayBest = Math.max(
+    0,
+    todayBest - chain.maxStreak
+  );
+
+  // 過去最高との差
+  chain.toAllTimeBest = Math.max(
+    0,
+    state.records[recordKey] - chain.maxStreak
+  );
+
+  // 全問制覇
+  chain.perfect =
+    chain.maxStreak === chain.questions.length;
+
+  // 10連達成
+  chain.milestone10 =
+    Math.floor(chain.maxStreak / 10) * 10;
 
   state.screen = "chainResult";
 
   render();
 }
 
+function getChainImage(streak, perfect){
+
+  if (perfect) return "images/cm_perfect.png";
+
+  if (streak >= 150) return "images/cm08.png";
+  if (streak >= 130) return "images/cm07.png";
+  if (streak >= 100) return "images/cm06.png";
+  if (streak >= 80)  return "images/cm05.png";
+  if (streak >= 50)  return "images/cm04.png";
+  if (streak >= 30)  return "images/cm03.png";
+  if (streak >= 10)  return "images/cm02.png";
+
+  return "images/cm01.png";
+
+}
+
 function renderChainResult(root){
 
   const chain = state.chain;
+  const streak = chain.maxStreak;
+  const todayBest = state.today?.maxChain || 0;
 
   const modeTitle =
     chain.mode === "basic"
@@ -2361,54 +2414,117 @@ function renderChainResult(root){
       ? "💥 弱点連チャン結果"
       : "🔥 連チャン結果";
 
+  const catImg = getChainImage(streak, chain.perfect);
+
+  const goldClass = chain.perfect ? "perfect-screen" : "";
+
   root.innerHTML = `
+
+  <div class="${goldClass}">
 
     <h2>${modeTitle}</h2>
 
-     <div class="mode-study">
-      <img src="images/cm01.png" class="mode-cat">
+    <div class="mode-cat result-step" id="stepCat">
+      <img src="${catImg}" class="mode-cat">
     </div>
 
-   
+    <p class="chain-score result-step" id="stepScore">
+      🔥 ${streak} 連チャン！
+    </p>
 
-      <p class="chain-score">
-        ${chain.maxStreak} 連チャン！
-      </p>
+    ${
+      chain.milestone10 >= 10
+      ? `<p class="milestone result-step" id="stepMilestone">
+           ${chain.milestone10}連達成！
+        </p>`
+      : ""
+    }
 
-      ${chain.newRecord
-        ? `<p class="new-record">
-            🎉 NEW RECORD！
-           </p>`
-        : ""
-      }
+    ${
+      chain.newRecord
+      ? `<p class="new-record result-step" id="stepRecord">
+          🎉 NEW RECORD！
+        </p>`
+      : ""
+    }
 
-    
+    ${
+      chain.perfect
+      ? `<p class="perfect result-step" id="stepPerfect">
+          🏆 完全制覇！おめでとう！
+        </p>`
+      : ""
+    }
+
+     
 
     <button class="mode-btn" id="retryBtn">
       🔁 もう一度
     </button>
 
-    <div class="bottom-nav">
-      <button id="backBtn"
-      class="mode-btn">
-        ◀モード選択へ
-      </button>
-    </div>
+  </div>
 
+  <div class="bottom-nav">
+
+    <button id="backBtn" class="mode-btn">
+      ◀ モード選択へ
+    </button>
+
+    <button id="menuBtn" class="mode-btn">
+      📋 メニューへ
+    </button> 
+
+  </div>
   `;
 
- 
-
+  showResultSteps(chain);
 
   document.getElementById("retryBtn")
-  .onclick = () => {
-    startChain(chain.mode);
-  };
+    ?.addEventListener("click", () => startChain(chain.mode));
+
+  document.getElementById("menuBtn")
+    ?.addEventListener("click", goChainMenu);
 
   document.getElementById("backBtn")
-  .onclick = goModeSelect;
+    ?.addEventListener("click", goModeSelect);
 
 }
+
+
+
+function showResultSteps(chain){
+
+  const steps = [
+    { id:"stepCat", sound:null },
+    { id:"stepScore", sound:"result" },
+    { id:"stepMilestone", sound:"milestone" },
+    { id:"stepRecord", sound:"record" },
+    { id:"stepPerfect", sound:"perfect" }
+  ];
+
+  let delay = 300;
+
+  steps.forEach(step => {
+
+    const el = document.getElementById(step.id);
+    if(!el) return;
+
+    setTimeout(()=>{
+
+      el.classList.add("show");
+
+      if(step.sound){
+        playSound(step.sound);
+      }
+
+    }, delay);
+
+    delay += 700;
+
+  });
+
+}
+
 
 
 
