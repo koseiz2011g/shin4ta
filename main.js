@@ -1195,7 +1195,7 @@ const MAX_STARS = 14; // 単元数が追加されたら増やす
  *********************************************************/
 
 load();
-cleanStars();
+
 
 // ==========================
 // state 定義
@@ -1319,6 +1319,8 @@ function getAllQuestions() {
 
 function render() {
 
+   cleanStars();  // ←🔥 これを追加
+
    window.scrollTo(0, 0); // ←追加
 
   console.log("render called", state.screen);
@@ -1366,12 +1368,7 @@ function render() {
 
     case "quiz":
       renderQuiz(app);
-      break;
-
-    case "studyQuestion":
-      renderStudyQuestion(app);
-      break;
-    
+      break;      
 
     default:
       app.textContent = "不明な画面です";
