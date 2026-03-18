@@ -2985,6 +2985,19 @@ function startWeakChain(){
 
 }
 
+function cleanStars(){
+
+  const stars = JSON.parse(localStorage.getItem("stars")) || {};
+
+  if(stars.weak){
+    delete stars.weak;
+    localStorage.setItem("stars", JSON.stringify(stars));
+  }
+
+  state.stars = stars;
+
+}
+
 
 /*********************************************************
  * UIユーティリティ
