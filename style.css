@@ -37,6 +37,13 @@ h2 {
   margin-bottom: 20px;
 }
 
+h3 {
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 0 0;
+  margin-bottom: 2px;
+}
+
 /* ===== ボタン共通 ===== */
 button {
   display: block;
@@ -814,7 +821,7 @@ button:disabled {
   margin-top: 20px;
   margin-bottom: 25px;
 
-  background: linear-gradient(45deg, #2f80ed, #56ccf2);
+  background: linear-gradient(45deg, #1f4cf0, #56ccf2);
   background-clip: text;
   -webkit-background-clip: text;
 
