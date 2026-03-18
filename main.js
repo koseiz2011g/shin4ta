@@ -3031,7 +3031,15 @@ function setupStarLongPress() {
   });
 }
 
+function init() {
 
+  console.log("INIT RUN"); // ←追加
+
+  cleanStars();
+  loadData();
+  render();
+
+}
 
 /*********************************************************
  * 初回描画
@@ -3044,3 +3052,5 @@ if ("serviceWorker" in navigator) {
     .then(() => console.log("SW registered"))
     .catch(err => console.error("SW failed", err));
 }
+
+init();
