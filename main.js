@@ -1599,7 +1599,7 @@ function renderModeSelect(root) {
     </div>
 
 
-    <p class="version">ver 1.7</p>
+    <p class="version">ver 1.75</p>
 
   `;
 
