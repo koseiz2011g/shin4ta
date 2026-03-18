@@ -1516,7 +1516,7 @@ function renderModeSelect(root) {
 
   root.innerHTML = `
 
-     <h2>-連チャン中学英文法-</h2>
+     <h3>-英語を日本語に-</h3><h3>「四択で」やさしく身につけよう</h3>
 
     <div class="mode-hero">
       <img src="images/4cats.png" class="mode-cat">
@@ -3069,3 +3069,4 @@ if ("serviceWorker" in navigator) {
 }
 
 init();
+
