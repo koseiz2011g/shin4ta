@@ -750,6 +750,9 @@ button:disabled {
   padding: 10px 10px;
   border-radius: 12px;
 
+  border: 2px solid #f6c453;
+box-shadow: 0 0 14px rgba(246, 196, 83, 0.7);
+
   z-index: 999;
   animation: popFade 1s ease;
 }
@@ -1317,10 +1320,20 @@ button:disabled {
   margin : 0;
 }
 
+.today-record {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0000ff;
+  
+  text-align: center;
+   animation: recordPop 0.6s ease;
+}
 
 /* ===== 今日イチ更新まで ===== */
 .today-gap {
   color: #444;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 
@@ -1386,4 +1399,43 @@ button:disabled {
   color:#d60000;
   margin-right:6px;
   font-size: 16px
+}
+
+.today-popup {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+
+  background: rgba(0, 0, 0, 0.75);
+  padding: 5px 5px;
+  border-radius: 14px;
+
+  /* 🔥アクセント */
+  border: 2px solid #f6c453;
+box-shadow: 0 0 14px rgba(246, 196, 83, 0.6);
+
+  z-index: 999;
+
+  animation: popFadeSoft 0.9s ease;
+}
+
+@keyframes popFadeSoft {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.9);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(1);
+  }
 }
