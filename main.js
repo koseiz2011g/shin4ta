@@ -1116,7 +1116,8 @@ function playSound(type){
     result    : "sounds/result.mp3",
     milestone : "sounds/milestone.mp3",
     record    : "sounds/record.mp3",
-    perfect   : "sounds/perfect.mp3"
+    perfect   : "sounds/perfect.mp3",
+    today     : "sounds/mew01.mp3"
 
   };
 
@@ -1145,8 +1146,8 @@ function getStudyEvaluation(correct, total) {
   if (rate >= 0.7) {
     return {
       label: "よくできました！",
-      image: "images/cm02.png",
-      sound: "finish"
+      image: "images/cmi02.png",
+      sound: "today"
     };
   }
 
@@ -1600,7 +1601,7 @@ function renderModeSelect(root) {
 
 
 
-    <p class="version">ver 1.8</p>
+    <p class="version">ver 1.83</p>
 
   `;
 
@@ -2250,7 +2251,7 @@ function renderChainQuestion(root){
 
    ${chain.showTodayRecordUpdate
     ? `<div class="milestone-popup">
-        👍 今日の記録更新！
+        😺 今日の記録更新！
        </div>`
     : ""
   }
@@ -2311,7 +2312,7 @@ if (
   chain.todayNewRecord = true;
 
   chain.showTodayRecordUpdate = true;
-  playSound("result");
+  playSound("today");
   render();
 
   setTimeout(()=>{
@@ -2693,7 +2694,7 @@ function showResultSteps(chain){
     { id:"stepScore", sound:"result" },
     { id:"stepMilestone", sound:"milestone" },
     { id:"stepRecord", sound:"record" },
-     { id:"stepToday", sound:"rusult" }, // ←追加！
+     { id:"stepToday", sound:"today" }, // ←追加！
     { id:"stepPerfect", sound:"perfect" }
   ];
 
