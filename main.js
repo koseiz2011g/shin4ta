@@ -1243,7 +1243,7 @@ indirect: {
 relative: {
     title: "📗 関係代名詞",
     questions: [
-[
+
   {
     "sentence": "I have <span class='highlight'>a friend who lives in Osaka</span>.",
     "choices": ["大阪に住んでいた友達", "大阪に住みそうな友達", "大阪に住んでいる友達", "大阪に住んでいない友達"],
