@@ -2291,7 +2291,17 @@ const state = {
     basicChain:0,
     weakChain:0
   },
-  
+
+   // ===== 学習履歴 =====
+  studyHistory: {},
+
+  // ===== カレンダー =====
+  calendar: {
+    year: new Date().getFullYear(),
+    month: new Date().getMonth(),
+    selectedDate: null
+  },
+
   popupMessage: null,
 
   confirmDialog: null,
@@ -2413,7 +2423,8 @@ function save() {
   const data = {
     progress: state.progress,
     maxChain: state.maxChain,
-    studyResults: state.studyResults
+    studyResults: state.studyResults,
+    studyHistory: state.studyHistory
   };
 
   localStorage.setItem(
@@ -2433,6 +2444,7 @@ function load() {
     state.progress = data.progress || {};
     state.maxChain = data.maxChain || 0;
     state.studyResults = data.studyResults || {};
+    state.studyHistory = data.studyHistory || {};
 
   } catch (e) {
     console.error("データ読み込み失敗", e);
@@ -2606,6 +2618,10 @@ function render() {
       renderStudyResult(app);
       break;
 
+    case "calendar":
+      renderCalendar(app);
+      break;
+
     case "chainMenu":
       renderChainMenu(app);
       break;
@@ -2683,6 +2699,8 @@ function startChain(mode){
     JSON.stringify(state.today)
   );
 
+
+
   let questions = [];
 
   if(mode==="basic"){
@@ -2708,6 +2726,9 @@ function startChain(mode){
     correctStreak:0,
     lastStreak:0,
     maxStreak:0,
+
+    answeredCount:0,
+    correctCount:0,
 
     answered:null,
 
@@ -2871,6 +2892,13 @@ function renderModeSelect(root) {
       </button>
     </div>
 
+<!-- 学習記録・効果音 -->
+<div class="bottom-buttons">
+
+<!-- 学習記録 -->
+    <button id="calendarBtn" class="mode-btn">
+      📅 学習記録
+    </button>
 
     <button id="soundToggleBtn" class="sound-btn">
   ${
@@ -2881,10 +2909,11 @@ function renderModeSelect(root) {
   }
 </button>
 
+</div>
 
 
 
-    <p class="version">ver 1.0.5</p>
+    <p class="version">ver 1.0.6</p>
 
 ${state.popupMessage
   ? `<div class="milestone-popup">
@@ -2897,6 +2926,11 @@ ${state.popupMessage
   `;
 
   // ===== ボタンイベント =====
+
+  document.getElementById("calendarBtn").onclick = () => {
+    state.screen = "calendar";
+    render();
+  };
 
   document.getElementById("studyBtn").onclick = () => {
     state.screen = "levelSelect";
@@ -2948,6 +2982,374 @@ render();
 };
 
 }
+
+function renderCalendar(root) {
+
+  const year = state.calendar.year;
+  const month = state.calendar.month;
+
+  const monthText = month + 1;
+
+  root.innerHTML = `
+    <div class="screen calendar">
+
+      <h2>📅 学習記録</h2>
+
+      <div class="calendar-header">
+        <button id="prevMonthBtn">◀</button>
+        <span>${year}年${monthText}月</span>
+        <button id="nextMonthBtn">▶</button>
+      </div>
+
+      <div class="calendar-week">
+        <div>日</div>
+        <div>月</div>
+        <div>火</div>
+        <div>水</div>
+        <div>木</div>
+        <div>金</div>
+        <div>土</div>
+      </div>
+
+      <div id="calendarDays" class="calendar-days"></div>
+
+      <div class="bottom-nav">
+      <button id="calendarBackBtn" class="mode-btn">
+        🔙 メニューへ
+      </button>
+      </div>
+
+    </div>
+  `;
+
+  // ===== 月の日数 =====
+
+  const firstDay =
+    new Date(year, month, 1).getDay();
+
+  const daysInMonth =
+    new Date(year, month + 1, 0).getDate();
+
+  const calendarDays =
+    document.getElementById("calendarDays");
+
+  // 月初までの空白
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement("div");
+    empty.className = "calendar-day empty";
+    calendarDays.appendChild(empty);
+  }
+
+  // 日付
+  for (let day = 1; day <= daysInMonth; day++) {
+
+  const dateKey =
+    `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+  const hasStudy =
+    !!state.studyHistory[dateKey];
+
+  const button =
+    document.createElement("button");
+
+  button.className = "calendar-day";
+
+  button.innerHTML = `
+    <span>${day}</span>
+    ${hasStudy ? `<span class="study-mark">🐾</span>` : ""}
+  `;
+
+  // 学習記録がある日のみクリック可能
+  if (hasStudy) {
+    button.onclick = () => {
+      state.calendar.selectedDate = dateKey;
+      renderCalendarDetail(root, dateKey);
+    };
+  } else {
+    button.disabled = true;
+  }
+
+  calendarDays.appendChild(button);
+}
+
+  // ===== 前月 =====
+
+  document.getElementById("prevMonthBtn").onclick = () => {
+
+    state.calendar.month--;
+
+    if (state.calendar.month < 0) {
+      state.calendar.month = 11;
+      state.calendar.year--;
+    }
+
+    render();
+  };
+
+  // ===== 次月 =====
+
+  document.getElementById("nextMonthBtn").onclick = () => {
+
+    state.calendar.month++;
+
+    if (state.calendar.month > 11) {
+      state.calendar.month = 0;
+      state.calendar.year++;
+    }
+
+    render();
+  };
+
+  // ===== 戻る =====
+
+  document.getElementById("calendarBackBtn").onclick = () => {
+    state.screen = "modeSelect";
+    render();
+  };
+}
+
+
+function renderCalendarDetail(root, dateKey) {
+
+  const categoryNames = {
+    pre02: "📗前置詞【２】",
+    pronoun02: "📗代名詞【２】",
+    tense: "📘時制",
+    verb: "📘動詞",
+    adverb: "📘副詞",
+    clauseparticiple: "📗節・分詞",
+    modal02: "📗助動詞【２】",
+    pre01: "📘前置詞",
+    adjective02: "📗形容詞【２】",
+    verb02: "📗動詞【２】",
+    adjective: "📘形容詞",
+    Que: "📘疑問詞",
+    pronoun01: "📘代名詞",
+    conjunction: "📘接続詞",
+    infinitive01: "📘不定詞",
+    modal: "📘助動詞",
+    infinitive02: "📗不定詞【２】",
+    adverb02: "📗副詞【２】",
+    passive: "📘受動態",
+    relative: "📘関係代名詞",
+    passive02: "📗受動態【２】",
+    idiom02: "📗熟語【２】",
+    pronoun03: "📗代名詞【３】",
+    pronoun04: "📗代名詞【４】",
+    indirect: "📗間接疑問文",
+    indirect02: "📗間接疑問文【２】",
+    infinitive03: "📗不定詞【３】",
+    clauseparticiple02: "📗節・分詞【２】",
+    idiom: "📗熟語",
+    conjunction02: "📗接続詞【２】",
+    relative02: "📗関係代名詞【２】",
+    weak: "弱点克服"
+  };
+
+  const history = state.studyHistory[dateKey];
+
+  if (!history) {
+    renderCalendar(root);
+    return;
+  }
+
+  const [year, month, day] =
+    dateKey.split("-");
+
+
+  // =========================
+  // じっくり学習
+  // =========================
+
+  let studyHtml = "";
+
+  // weak以外をじっくり学習として表示
+  const normalStudy =
+    (history.study || []).filter(
+      record => record.categoryKey !== "weak"
+    );
+
+  if (normalStudy.length > 0) {
+
+    studyHtml = normalStudy.map(record => {
+
+      return `
+        <div class="history-item">
+
+          <div class="history-category">
+            ${categoryNames[record.categoryKey] || record.categoryKey}
+          </div>
+
+          <div class="history-score">
+            ${record.correct} / ${record.total}
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+  } else {
+
+    studyHtml = `
+      <p>じっくり学習の記録はありません。</p>
+    `;
+  }
+
+
+  // =========================
+  // 弱点学習
+  // =========================
+
+  let weakStudyHtml = "";
+
+  const weakStudy =
+    (history.study || []).filter(
+      record => record.categoryKey === "weak"
+    );
+
+  if (weakStudy.length > 0) {
+
+    weakStudyHtml = weakStudy.map(record => {
+
+      return `
+        <div class="history-item">
+
+          <div class="history-category">
+            💡 弱点学習
+          </div>
+
+          <div class="history-score">
+            ${record.correct} / ${record.total}
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+  } else {
+
+    weakStudyHtml = `
+      <p>弱点学習の記録はありません。</p>
+    `;
+  }
+
+
+  // =========================
+  // 連チャン記録
+  // =========================
+
+  let chainHtml = "";
+
+  const chainRecords = history.chain || [];
+  const weakChainRecords = history.weak || [];
+
+  const allChainRecords = [
+    ...chainRecords,
+    ...weakChainRecords.map(record => ({
+      mode: "weak",
+      ...record
+    }))
+  ];
+
+  if (allChainRecords.length > 0) {
+
+    chainHtml = allChainRecords.map(record => {
+
+      const modeName =
+        record.mode === "basic"
+          ? "🎈 必修連チャン"
+          : record.mode === "weak"
+          ? "💥 弱点連チャン"
+          : "🔥 連チャン";
+
+      return `
+        <div class="history-item">
+
+          <div class="history-category">
+            ${modeName}
+          </div>
+
+          <div class="history-score">
+            回答数 ${record.answered}問　
+            ${record.maxStreak}連チャン
+          </div>
+
+        </div>
+      `;
+
+    }).join("");
+
+  } else {
+
+    chainHtml = `
+      <p>連チャンの記録はありません。</p>
+    `;
+  }
+
+
+  // =========================
+  // 画面表示
+  // =========================
+
+  root.innerHTML = `
+
+    <div class="screen calendar-detail">
+
+      <h2>📅 学習記録</h2>
+
+      <h3>
+        ${Number(year)}年${Number(month)}月${Number(day)}日
+      </h3>
+
+
+      <div class="history-section">
+
+        <h3>📘 じっくり学習 📗</h3>
+
+        ${studyHtml}
+
+      </div>
+
+
+      <div class="history-section">
+
+        <h3>💡 弱点学習</h3>
+
+        ${weakStudyHtml}
+
+      </div>
+
+
+      <div class="history-section">
+
+        <h3>🔥 連チャン記録</h3>
+
+        ${chainHtml}
+
+      </div>
+
+      
+
+
+      <div class="bottom-nav">
+      <button id="calendarDetailBackBtn" class="mode-btn">
+        📅 カレンダーへ戻る
+      </button>
+      
+      </div>
+
+    </div>
+  `;
+
+
+  document.getElementById("calendarDetailBackBtn").onclick = () => {
+    renderCalendar(root);
+  };
+
+}
+
 
 function renderStudyMenu(root) {
   root.innerHTML = `
@@ -3469,36 +3871,64 @@ function handleSwipe() {
 }
 
 function finishStudy() {
+
   const study = state.study;
+
   const total = study.questions.length;
   const correct = study.correctCount;
 
   state.studyResults = state.studyResults || {};
+
   state.studyResults[study.categoryKey] = { correct };
-  
-  save();
+
+  // ===== 学習履歴を保存 =====
+  const now = new Date();
+
+  const today =
+    now.getFullYear() + "-" +
+    String(now.getMonth() + 1).padStart(2, "0") + "-" +
+    String(now.getDate()).padStart(2, "0");
+
+  state.studyHistory = state.studyHistory || {};
+
+  if (!state.studyHistory[today]) {
+    state.studyHistory[today] = {
+      study: [],
+      chain: [],
+      weak: []
+    };
+  }
+
+  state.studyHistory[today].study.push({
+    categoryKey: study.categoryKey,
+    correct: correct,
+    total: total
+  });
 
   const alreadyHadStar = state.stars[study.categoryKey];
+
   let newlyEarned = false;
 
   if (
-  correct === total &&
-  !alreadyHadStar &&
-  study.categoryKey !== "weak"
-) {
-  state.stars[study.categoryKey] = 1;
+    correct === total &&
+    !alreadyHadStar &&
+    study.categoryKey !== "weak"
+  ) {
 
-  localStorage.setItem(
-    "stars",
-    JSON.stringify(state.stars)
-  );
+    state.stars[study.categoryKey] = 1;
 
-  newlyEarned = true;
-}
+    localStorage.setItem(
+      "stars",
+      JSON.stringify(state.stars)
+    );
+
+    newlyEarned = true;
+  }
 
   state.study.newlyEarnedStar = newlyEarned;
 
-
+  // 学習結果・学習履歴を保存
+  save();
 
   state.screen = "studyResult";
   render();
@@ -3966,6 +4396,11 @@ buttons.forEach((b,i)=>{
 
         btn.classList.add("correct");
         chain.answered = {selected,isCorrect:true};
+
+        // 学習履歴用
+        chain.answeredCount++;
+        chain.correctCount++;
+
         chain.correctStreak++;
 
         if(chain.mode==="weak"){
@@ -4050,6 +4485,9 @@ buttons.forEach((b,i)=>{
 
 
         btn.classList.add("wrong");
+
+         // 学習履歴用
+        chain.answeredCount++;
 
         chain.lastStreak =
           chain.correctStreak;
@@ -4156,6 +4594,46 @@ function finishChain() {
     "todayRecord",
     JSON.stringify(state.today)
   );
+
+    // =========================
+  // 学習履歴を保存
+  // =========================
+
+  const now = new Date();
+
+  const dateKey =
+    `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+
+  state.studyHistory = state.studyHistory || {};
+
+  if (!state.studyHistory[dateKey]) {
+    state.studyHistory[dateKey] = {
+      study: [],
+      chain: [],
+      weak: []
+    };
+  }
+
+  const historyRecord = {
+    answered: chain.answeredCount,
+    correct: chain.correctCount,
+    maxStreak: chain.maxStreak
+  };
+
+  if (chain.mode === "weak") {
+
+    state.studyHistory[dateKey].weak.push(historyRecord);
+
+  } else {
+
+    state.studyHistory[dateKey].chain.push({
+      mode: chain.mode,
+      ...historyRecord
+    });
+
+  }
+
+  save();
 
   // =========================
   // モード別記録

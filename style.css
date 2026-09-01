@@ -1195,3 +1195,165 @@ box-shadow: 0 0 14px rgba(246, 196, 83, 0.6);
 .audio-btn:active{
   transform:scale(0.97);
 }
+
+/* ===== 学習カレンダー ===== */
+
+.calendar {
+  padding: 20px;
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.calendar-header button {
+  font-size: 18px;
+  padding: 8px 14px;
+}
+
+.calendar-week,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-week {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.calendar-days {
+  margin-bottom: 25px;
+}
+
+.calendar-day {
+  min-height: 55px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 16px;
+}
+
+.calendar-day.empty {
+  border: none;
+  background: transparent;
+}
+
+.study-mark {
+  display: block;
+  font-size: 22px;
+}
+
+/* =========================
+   カレンダー詳細画面
+   ========================= */
+
+.calendar-detail {
+  padding-bottom: 30px;
+}
+
+.calendar-detail .history-section {
+  margin: 18px auto;
+  padding: 16px;
+  max-width: 500px;
+
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.10);
+}
+
+.calendar-detail .history-section h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+
+/* 個々の学習記録 */
+
+.calendar-detail .history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 8px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.calendar-detail .history-item:last-child {
+  border-bottom: none;
+}
+
+.calendar-detail .history-category {
+  font-weight: bold;
+}
+
+.calendar-detail .history-score {
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+/* 連チャン記録は縦方向に */
+
+.calendar-detail .history-section:nth-of-type(3) .history-item {
+  display: block;
+}
+
+.calendar-detail .history-section:nth-of-type(3) .history-category {
+  margin-bottom: 6px;
+}
+
+.calendar-detail .history-section:nth-of-type(3) .history-score {
+  text-align: right;
+}
+
+/* 学習記録・効果音ボタン */
+.bottom-buttons {
+  display: flex;
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto 0;
+}
+
+.bottom-buttons #calendarBtn {
+  flex: 2;
+}
+
+.bottom-buttons #soundToggleBtn {
+  flex: 1;
+}
+
+/* カレンダー年月・月移動 */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 15px auto;
+}
+
+/* ◀ ▶ ボタン */
+.calendar-header button {
+  width: 36px;
+  height: 32px;
+  padding: 0;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+/* 年月表示 */
+.calendar-header span {
+  font-size: 22px;
+  font-weight: bold;
+  min-width: 150px;
+  text-align: center;
+}
